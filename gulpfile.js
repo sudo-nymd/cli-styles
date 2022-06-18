@@ -37,7 +37,7 @@ const TASK_CONFIG = {
     },
     TEST: {
         command: './node_modules/.bin/mocha',
-        args: ['--config', './tests/.mocharc.json']
+        args: ['--config', './__tests__/.mocharc.json']
     },
     BUNDLE: {
         command: './node_modules/.bin/webpack-cli'
