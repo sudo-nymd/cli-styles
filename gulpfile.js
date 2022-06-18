@@ -128,7 +128,7 @@ exports.test = testTask;
  * TASK BUILD
  * Builds the project.
  */
-const buildTask = series([cleanTask, compileTask, bundleTask]);
+const buildTask = series([cleanTask, compileTask]);
 
 buildTask.description = `Cleans and compiles the project.`
 exports.build = buildTask;
