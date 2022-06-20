@@ -1,6 +1,6 @@
 
 import { redBright, yellowBright, greenBright, magentaBright, blueBright} from 'ansi-colors';
-
+const DEBUG = (process.env.DEBUG) ? true : false;
 type TestLogEntryType = "log" | "debug" | "warning" | "error";
 
 type TestLogMessage = object | string;
@@ -45,7 +45,7 @@ export const log = (log: TestLog, msg: TestLogMessage, src?: string) => {
  * @param msg The object to print.
  * @param src Optional. The log source.
  */
-export const debug = (log: TestLog, msg: object, src?: string) => {
+export const debug = (log: TestLog, msg: object | string, src?: string) => {
     push(log, "debug", msg, src);
 }
 
@@ -87,8 +87,10 @@ export const flush = (log: TestLog) => {
                 break;
 
             case "debug":
+                if(DEBUG) {
                 console.debug(tab + blueBright(source));
                 console.debug((message));
+                }
                 break;
 
             default:

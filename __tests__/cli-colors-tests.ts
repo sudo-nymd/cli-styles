@@ -9,7 +9,7 @@ import { expect } from 'chai';
 // "Stateless" logging functions (avoid clashes with Mocha's hijackng of "this")
 const LOGENTRY = logger.create(ModuleName);
 const log = (msg: string | object, src?: string) => logger.log(LOGENTRY, msg, src);
-const debug = (msg: object, src?: string) => logger.debug(LOGENTRY, msg, src);
+const debug = (msg: object | string, src?: string) => logger.debug(LOGENTRY, msg, src);
 const error = (msg: string | object, src?: string) => logger.error(LOGENTRY, msg, src);
 const warn = (msg: string | object, src?: string) => logger.warn(LOGENTRY, msg, src);
 
@@ -66,8 +66,8 @@ describe(`It tests the "${ModuleName}" module.`, function () {
             //log(expected.replace(/\x1b/g, "T",), "expected");
             //log(actual.replace(/\x1b/g, "T"), "__actual  ");
 
-            log(actual, '+' + text.padStart(30));
-            log(expected, '+' + text.padStart(30))
+            debug(actual, '+' + text.padStart(30));
+            debug(expected, '+' + text.padStart(30))
             expect(actual).to.equal(expected);
         }
 
@@ -86,11 +86,23 @@ describe(`It tests the "${ModuleName}" module.`, function () {
             const c = cliColors.codes[code.name] as AnyStyleCode;
             const expected = util.format("\x1b[%sm%s\x1b[%sm\x1b[0m", code.value[0], code.name, code.value[1]);
             const actual = func(code.name);
-            log(actual, '+' + code.name.padStart(20));
+            debug(actual, '+' + code.name.padStart(20));
 
             expect(actual).to.equal(expected);
         });
 
         done();
     })
+
+    it.skip(`Tests the terminate() method.`, function (done) {
+
+        const text = Math.random().toString();
+        const expected = util.format("%s\x1b[0m", text);
+        const actual = cliColors.terminate(text);
+
+        debug({ expected, actual});
+
+        expect(actual).to.equal(expected);
+        done();
+    });
 })

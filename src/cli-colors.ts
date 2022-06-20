@@ -77,4 +77,4 @@ export default cliColors;
 /**
  * Export module name for test runners.
  */
-export const ModuleName = 'colors'
+export const ModuleName = 'cli-colors'

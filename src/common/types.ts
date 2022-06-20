@@ -84,6 +84,7 @@ export interface ICliColors {
     strikethrough(text: string): string;
 
     get codes(): ICliColorCodes;
+    terminate(text: string): string;
 
     [key: string]: any;
 }
