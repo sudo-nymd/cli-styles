@@ -1,7 +1,7 @@
 import cliColors from "../src/cli-colors";
 import { ModuleName } from '../src/cli-colors';
 import { AnsiStyleCodes } from '../src/common/colors';
-import { AllStyleCodes, ColorClass, ColorCode, ModifierCode, StyleCode, StyleCodeType, StyleFunction } from "../src/common/types";
+import { AnyStyleCode, ColorClass, ColorCode, ModifierCode, StyleCode, StyleCodeType, StyleFunction } from "../src/common/types";
 import * as logger from './lib/logger';
 import * as util from 'util';
 import { expect } from 'chai';
@@ -66,8 +66,8 @@ describe(`It tests the "${ModuleName}" module.`, function () {
             //log(expected.replace(/\x1b/g, "T",), "expected");
             //log(actual.replace(/\x1b/g, "T"), "__actual  ");
 
-            log(actual, "__actual");
-            log(expected, "expected")
+            log(actual, '+' + text.padStart(30));
+            log(expected, '+' + text.padStart(30))
             expect(actual).to.equal(expected);
         }
 
@@ -83,10 +83,10 @@ describe(`It tests the "${ModuleName}" module.`, function () {
 
         AnsiStyleCodes.forEach(function (code) {
             const func = cliColors[code.name] as StyleFunction;
-            const c = cliColors.codes[code.name] as AllStyleCodes;
+            const c = cliColors.codes[code.name] as AnyStyleCode;
             const expected = util.format("\x1b[%sm%s\x1b[%sm\x1b[0m", code.value[0], code.name, code.value[1]);
             const actual = func(code.name);
-            log(actual, code.name);
+            log(actual, '+' + code.name.padStart(20));
 
             expect(actual).to.equal(expected);
         });

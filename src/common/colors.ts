@@ -1,7 +1,7 @@
 import cliColors from '../cli-colors';
-import { AllStyleCodes, ColorClass, ColorCode, ModifierCode, StyleCodeArray, StyleCodeType } from './types';
+import { AnyStyleCode, ColorClass, ColorCode, ModifierCode, StyleCodeArray, StyleCodeType } from './types';
 
-export const AnsiStyleCodes: StyleCodeArray<AllStyleCodes> = [
+export const AnsiStyleCodes: StyleCodeArray<AnyStyleCode> = [
 
     { name: "black", value: [30, 39], type: StyleCodeType.Color, class: ColorClass.Foreground },
     { name: "blackBright", value: [90, 39], type: StyleCodeType.Color, class: ColorClass.ForegroundBright },

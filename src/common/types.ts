@@ -39,7 +39,7 @@ export type StyleCodeDictionary<T> = {
 
 export type StyleCodeArray<T> = Array<T>;
 
-export type AllStyleCodes = ColorCode | ModifierCode | TransparentCode;
+export type AnyStyleCode = ColorCode | ModifierCode | TransparentCode;
 
 export interface ICliColors {
     black(text: string): string;
@@ -89,46 +89,46 @@ export interface ICliColors {
 }
 
 export interface ICliColorCodes {
-    readonly black: AllStyleCodes;
-    readonly blackBright: AllStyleCodes;
-    readonly bgBlack: AllStyleCodes;
-    readonly bgBlackBright: AllStyleCodes;
-    readonly red: AllStyleCodes;
-    readonly redBright: AllStyleCodes;
-    readonly bgRed: AllStyleCodes;
-    readonly bgRedBright: AllStyleCodes;
-    readonly green: AllStyleCodes;
-    readonly greenBright: AllStyleCodes;
-    readonly bgGreen: AllStyleCodes;
-    readonly bgGreenBright: AllStyleCodes;
-    readonly yellow: AllStyleCodes;
-    readonly yellowBright: AllStyleCodes;
-    readonly bgYellow: AllStyleCodes;
-    readonly bgYellowBright: AllStyleCodes;
-    readonly blue: AllStyleCodes;
-    readonly blueBright: AllStyleCodes;
-    readonly bgBlue: AllStyleCodes;
-    readonly bgBlueBright: AllStyleCodes;
-    readonly magenta: AllStyleCodes;
-    readonly magentaBright: AllStyleCodes;
-    readonly bgMagenta: AllStyleCodes;
-    readonly bgMagentaBright: AllStyleCodes;
-    readonly cyan: AllStyleCodes;
-    readonly cyanBright: AllStyleCodes;
-    readonly bgCyan: AllStyleCodes;
-    readonly bgCyanBright: AllStyleCodes;
-    readonly white: AllStyleCodes;
-    readonly whiteBright: AllStyleCodes;
-    readonly bgWhite: AllStyleCodes;
-    readonly bgWhiteBright: AllStyleCodes;
-    readonly bold: AllStyleCodes;
-    readonly reset: AllStyleCodes;
-    readonly dim: AllStyleCodes;
-    readonly italic: AllStyleCodes;
-    readonly underline: AllStyleCodes;
-    readonly inverse: AllStyleCodes;
-    readonly hidden: AllStyleCodes;
-    readonly strikethrough: AllStyleCodes;
+    readonly black: AnyStyleCode;
+    readonly blackBright: AnyStyleCode;
+    readonly bgBlack: AnyStyleCode;
+    readonly bgBlackBright: AnyStyleCode;
+    readonly red: AnyStyleCode;
+    readonly redBright: AnyStyleCode;
+    readonly bgRed: AnyStyleCode;
+    readonly bgRedBright: AnyStyleCode;
+    readonly green: AnyStyleCode;
+    readonly greenBright: AnyStyleCode;
+    readonly bgGreen: AnyStyleCode;
+    readonly bgGreenBright: AnyStyleCode;
+    readonly yellow: AnyStyleCode;
+    readonly yellowBright: AnyStyleCode;
+    readonly bgYellow: AnyStyleCode;
+    readonly bgYellowBright: AnyStyleCode;
+    readonly blue: AnyStyleCode;
+    readonly blueBright: AnyStyleCode;
+    readonly bgBlue: AnyStyleCode;
+    readonly bgBlueBright: AnyStyleCode;
+    readonly magenta: AnyStyleCode;
+    readonly magentaBright: AnyStyleCode;
+    readonly bgMagenta: AnyStyleCode;
+    readonly bgMagentaBright: AnyStyleCode;
+    readonly cyan: AnyStyleCode;
+    readonly cyanBright: AnyStyleCode;
+    readonly bgCyan: AnyStyleCode;
+    readonly bgCyanBright: AnyStyleCode;
+    readonly white: AnyStyleCode;
+    readonly whiteBright: AnyStyleCode;
+    readonly bgWhite: AnyStyleCode;
+    readonly bgWhiteBright: AnyStyleCode;
+    readonly bold: AnyStyleCode;
+    readonly reset: AnyStyleCode;
+    readonly dim: AnyStyleCode;
+    readonly italic: AnyStyleCode;
+    readonly underline: AnyStyleCode;
+    readonly inverse: AnyStyleCode;
+    readonly hidden: AnyStyleCode;
+    readonly strikethrough: AnyStyleCode;
 
-    [key: string]: AllStyleCodes;
+    [key: string]: AnyStyleCode;
 }
