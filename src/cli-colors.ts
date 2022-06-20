@@ -36,8 +36,9 @@ class CliColors {
                 }
             }
 
-            
-            self._codes[key] = codes[key];
+            const c= codes[key];
+            c.name = key;
+            self._codes[key] = c;
             
 
             Object.defineProperties(CliColors.prototype, colorObj);

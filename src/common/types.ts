@@ -9,6 +9,7 @@ export enum StyleCodeType {
 export type StyleCode = {
     value: [number, number] | number[];
     type: StyleCodeType;
+    name: string;
 }
 
 export enum ColorClass {
@@ -126,4 +127,6 @@ export interface ICliColorCodes {
     readonly inverse: AllStyleCodes;
     readonly hidden: AllStyleCodes;
     readonly strikethrough: AllStyleCodes;
+
+    [key: string]: AllStyleCodes;
 }
