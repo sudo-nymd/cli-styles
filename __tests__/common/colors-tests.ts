@@ -1,12 +1,18 @@
 import { AnsiStyleCodes, ModuleName } from '../../src/common/colors';
-
+import { ColorClass, StyleCodeType } from '../../src/common/types';
 
 describe(`It tests the "${ModuleName}" module.`, function() {
 
     it.skip(`Generates interfaces from the colors dictionary.`, function(done) {
 
-        Object.keys(AnsiStyleCodes).forEach((key) => {
-            console.log(`readonly ${key}: AllStyleCodes;`)
+        AnsiStyleCodes.forEach((code) => {
+            if(code.type === StyleCodeType.Color) {
+                console.log(`{ name: "${code.name}", value: [${code.value}], type: StyleCodeType.${StyleCodeType[code.type]}, class: ColorClass.${ColorClass[code.class] } },`)
+            } else {
+                console.log(`{ name: "${code.name}", value: [${code.value}], type: StyleCodeType.${StyleCodeType[code.type]} },`)
+            }
+            //console.log(`readonly ${key}: AllStyleCodes;`)
+            //console.log(`{ name: key}`)
         })
 
         done();

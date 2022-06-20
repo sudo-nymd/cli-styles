@@ -1,5 +1,5 @@
 import { AnsiStyleCodes } from "./common/colors";
-import { AllStyleCodes, ICliColors, StyleCode, StyleCodeDictionary } from "./common/types";
+import { AllStyleCodes, ICliColors, StyleCode, StyleCodeArray, StyleCodeDictionary } from "./common/types";
 
 class CliColors {
 
@@ -10,19 +10,15 @@ class CliColors {
         this._stack = [];
         this._codes = {};
 
-        const codes = Object.assign({}, AnsiStyleCodes);
-        const keys = Object.keys(codes);
-
         const self = this;     
 
-        keys.forEach(function (key) {
+        AnsiStyleCodes.forEach(function (code) {
             const colorObj = {
-                [key]: {
+                [code.name]: {
                     get() {
-                        self._stack.push(codes[key])
+                        self._stack.push(code)
                         const fmt = (text: string) => {
-                            const resetCode = AnsiStyleCodes.reset as AllStyleCodes;
-                            const reset = "\x1b[" + resetCode.value[0] + "m";
+                            const reset = "\x1b[0m";
                             for (var d of self._stack.reverse()) {
                                 text = "\x1b[" + d.value[0] + "m" + text + "\x1b[" + d.value[1] + "m";
                             }
@@ -36,11 +32,8 @@ class CliColors {
                 }
             }
 
-            const c= codes[key];
-            c.name = key;
-            self._codes[key] = c;
+            self._codes[code.name] = code;
             
-
             Object.defineProperties(CliColors.prototype, colorObj);
         });
     }
@@ -58,6 +51,7 @@ const createInstance = (): ICliColors => {
 const cliColors = createInstance();
 
 export default cliColors;
+
 /**
  * Export module name for test runners.
  */

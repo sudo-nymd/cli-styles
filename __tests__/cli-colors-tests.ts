@@ -27,8 +27,7 @@ describe(`It tests the "${ModuleName}" module.`, function () {
     const BRIGHTs = [];
     const MODIFIERs: ModifierCode[] = [];
 
-    Object.keys(AnsiStyleCodes).forEach(function(key) {
-        const code = AnsiStyleCodes[key];
+    AnsiStyleCodes.forEach(function(code) {
         if (code.type === StyleCodeType.Color) {
             switch(code.class) {
                 case ColorClass.Foreground:
@@ -49,7 +48,7 @@ describe(`It tests the "${ModuleName}" module.`, function () {
         logger.flush(LOGENTRY);
     });
 
-    it.only(`Tests chaining random backgrounds, foregrounds, and modifiers.`, function(done) {
+    it(`Tests chaining random backgrounds, foregrounds, and modifiers.`, function(done) {
 
         for(let i = 0; i < 100; i++) {
 
@@ -82,12 +81,12 @@ describe(`It tests the "${ModuleName}" module.`, function () {
         const actualLength = Object.keys(cliColors.codes).length;
         expect(actualLength, 'Invalid count of cliColors.codes properties.').to.equal(expectedLength);
 
-        keys.forEach(function (key) {
-            const func = cliColors[key] as StyleFunction;
-            const code = cliColors.codes[key] as AllStyleCodes;
-            const expected = util.format("\x1b[%sm%s\x1b[%sm\x1b[0m", code.value[0], key, code.value[1]);
-            const actual = func(key);
-            log(actual, key);
+        AnsiStyleCodes.forEach(function (code) {
+            const func = cliColors[code.name] as StyleFunction;
+            const c = cliColors.codes[code.name] as AllStyleCodes;
+            const expected = util.format("\x1b[%sm%s\x1b[%sm\x1b[0m", code.value[0], code.name, code.value[1]);
+            const actual = func(code.name);
+            log(actual, code.name);
 
             expect(actual).to.equal(expected);
         });

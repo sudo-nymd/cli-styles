@@ -37,6 +37,8 @@ export type StyleCodeDictionary<T> = {
     [key: string]: T
 }
 
+export type StyleCodeArray<T> = Array<T>;
+
 export type AllStyleCodes = ColorCode | ModifierCode | TransparentCode;
 
 export interface ICliColors {
