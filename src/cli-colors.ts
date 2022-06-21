@@ -1,6 +1,6 @@
 import * as util from 'util'
 import { AnsiStyleCodes } from "./common/colors";
-import { AnyStyleCode, ICliColors, StyleCode, StyleCodeArray, StyleCodeDictionary } from "./common/types";
+import { AnyStyleCode, ICliColors, StyleCode, StyleCodeType, ColorClass, StyleCodeDictionary, StyleFunction } from "./common/types";
 
 class CliColors {
 
@@ -78,3 +78,5 @@ export default cliColors;
  * Export module name for test runners.
  */
 export const ModuleName = 'cli-colors'
+
+export { ColorClass, StyleCodeType, StyleCode, AnyStyleCode, StyleFunction }

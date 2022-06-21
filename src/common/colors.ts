@@ -1,3 +1,4 @@
+import { generateKey } from 'crypto';
 import cliColors from '../cli-colors';
 import { AnyStyleCode, ColorClass, ColorCode, ModifierCode, StyleCodeArray, StyleCodeType } from './types';
 
@@ -19,6 +20,8 @@ export const AnsiStyleCodes: StyleCodeArray<AnyStyleCode> = [
     { name: "yellowBright", value: [93, 39], type: StyleCodeType.Color, class: ColorClass.ForegroundBright },
     { name: "bgYellow", value: [43, 49], type: StyleCodeType.Color, class: ColorClass.Background },
     { name: "bgYellowBright", value: [103, 49], type: StyleCodeType.Color, class: ColorClass.BackgroundBright },
+    { name: "grey", value: [90, 39], type: StyleCodeType.Color, class: ColorClass.Foreground },
+    { name: "gray", value: [90, 39], type: StyleCodeType.Color, class: ColorClass.Foreground },
     { name: "blue", value: [34, 39], type: StyleCodeType.Color, class: ColorClass.Foreground },
     { name: "blueBright", value: [94, 39], type: StyleCodeType.Color, class: ColorClass.ForegroundBright },
     { name: "bgBlue", value: [44, 49], type: StyleCodeType.Color, class: ColorClass.Background },

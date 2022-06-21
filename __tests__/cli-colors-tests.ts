@@ -57,14 +57,9 @@ describe(`It tests the "${ModuleName}" module.`, function () {
             const m = MODIFIERs[Math.floor(Math.random() * (MODIFIERs.length - 1))];
 
             const text = `${fg.name}=>${bg.name}=>${m.name}`;
-            //log(text)
 
-            //const expected = util.format("\x1b[%sm\x1b[%sm\x1b[%sm\x1b[%sm\x1b[%sm\x1b[%sm\x1b%s\x1b[0m", fg.value[0], fg.value[1], bg.value[0], bg.value[1], m.value[0], m.value[1], '');
             const expected = encode(fg, encode(bg, encode(m, text))) + "\x1b[0m";
             const actual = cliColors[fg.name][bg.name][m.name](text);
-
-            //log(expected.replace(/\x1b/g, "T",), "expected");
-            //log(actual.replace(/\x1b/g, "T"), "__actual  ");
 
             debug(actual, '+' + text.padStart(30));
             debug(expected, '+' + text.padStart(30))
@@ -94,7 +89,7 @@ describe(`It tests the "${ModuleName}" module.`, function () {
         done();
     })
 
-    it.skip(`Tests the terminate() method.`, function (done) {
+    it(`Tests the terminate() method.`, function (done) {
 
         const text = Math.random().toString();
         const expected = util.format("%s\x1b[0m", text);
@@ -105,4 +100,28 @@ describe(`It tests the "${ModuleName}" module.`, function () {
         expect(actual).to.equal(expected);
         done();
     });
+    
+    it(`Samples for screenshots.`, function (done) {
+        let count = 0;
+        let index = 0;
+        console.log("\n\n\n");
+        AnsiStyleCodes.forEach(function(code) {
+            //if(count % 2 === 0) {
+                const n_1 = AnsiStyleCodes[count].name;
+                //const n_2 = AnsiStyleCodes[count + 1].name;
+                const f_1 = cliColors[n_1] as StyleFunction;
+                //const f_2 = cliColors[n_2] as StyleFunction;
+                const v_1 = f_1(n_1);
+                //const v_2 = f_2(n_2);
+
+                console.log('$              ' + n_1.padStart(15) + ': ' + v_1)
+            //}
+            count = count + 1;
+            
+        });
+
+        console.log("\n\n\n");
+
+        done();
+    })
 })
