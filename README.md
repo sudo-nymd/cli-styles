@@ -60,7 +60,7 @@ console.log(cliColors.bgYellow.magenta.bold('This text will be BOLD and BLUE wit
 | gray    |                   |               |                          |
 | grey    |                   |               |                          |
 
-<img src="https://github.com/sudo-nymd/cli-colors/blob/master/screenshot1.png?raw=true"/>
+<img src="https://github.com/sudo-nymd/cli-colors/blob/master/screenshot1.png?raw=true" width="200"/>
 
 ## Style Modifiers
 
