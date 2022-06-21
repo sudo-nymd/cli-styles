@@ -3,8 +3,10 @@
   "version": "0.0.7",
   "description": "A simple library for command line interface (CLI) colors.",
   "main": "lib/index.js",
+  "types": "./types",
   "files": [
-    "lib"
+    "lib",
+    "types"
   ],
   "scripts": {
     "clean": "gulp clean",
@@ -39,5 +41,16 @@
   },
   "dependencies": {
     "dotenv": "^16.0.1"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudo-nymd/cli-colors.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sudo-nymd/cli-colors/issues"
+  },
+  "homepage": "https://github.com/sudo-nymd/cli-colors#readme"
 }
