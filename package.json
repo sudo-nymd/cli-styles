@@ -1,6 +1,6 @@
 {
   "name": "@sudo-nymd/cli-colors",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A simple library for command line interface (CLI) colors.",
   "main": "lib/index.js",
   "files": [
