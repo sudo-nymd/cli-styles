@@ -12,8 +12,7 @@
     "bundle": "gulp bundle",
     "build": "gulp build",
     "test": "gulp test",
-    "start": "node ./lib/index.js",
-    "postinstall": "gulp postInstall && gulp build && npm run test && npm start"
+    "start": "node ./lib/index.js"
   },
   "keywords": [],
   "author": "TylerDurham <sudo-nymd@outlook.com> (https://github.com/TylerDurham)",
