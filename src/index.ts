@@ -1,8 +1,22 @@
-import { ColorClass, StyleCode, StyleCodeType, StyleFunction } from "./cli-colors";
 import cliColors from './cli-colors';
-import { AnsiStyleCodes } from "./common/colors";
-import { StyleCodeArray } from "./common/types";
+import { AnsiStyleCodes } from './common/colors';
+import {
+    ColorClass,
+    StyleCode,
+    StyleCodeType,
+    StyleFunction
+    } from './cli-colors';
+import { ColorCode, ModifierCode, StyleCodeArray } from './common/types';
 
 export default cliColors;
 
-export { ColorClass, StyleCode, StyleCodeType, StyleFunction, AnsiStyleCodes, StyleCodeArray }
+export { 
+    AnsiStyleCodes, 
+    ColorClass, 
+    ColorCode, 
+    ModifierCode, 
+    StyleCode, 
+    StyleCodeArray, 
+    StyleCodeType, 
+    StyleFunction, 
+}
