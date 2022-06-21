@@ -1,39 +1,79 @@
-# ts-lib-template
+# @sudo-nymd/cli-colors
 
-My preferred TypeScript Library project scaffolding.
+A simple library for command line interface (CLI) colors.
 
-## Things 'n Stuff
+<img src="https://github.com/sudo-nymd/cli-colors/blob/master/screenshot1.png?raw=true"/>
 
-* [Cross-Spawn], because I run ```exec``` for many of my [Gulp] tasks and I switch between Linux, Mac, and Windows - a lot.
-* [Dotenv] for configuration.
-    * Includes sample ```.env``` file that can safely be checked into Git.
-* [Gulp] for build automation.
-* [Mocha] and [Chai] for testing.
-    * Includes sample test rigs, including my logging approach ([Mocha] totally hijacks the ```this``` keyword).
-* [TypeScript], just 'cause.
-* [Webpack], if I need it.
+## Does the World Need Another Colors Library?
 
-## Getting Started
+### No.
+
+There are already plenty of ```great``` CLI color libraries out there:
+
+* [chalk]
+* [colors]
+* [ansi-colors]
+* [cli-colors]
+
+```@sudo-nymd/cli-colors``` is purely a "vanity" project to sharpen my "vanilla" JavaScript/TypeScript skills. Feel free to use it if you like. ```@sudo-nymd/cli-colors``` provides a familiar API, plus a few utilities that I needed for a project.
+
+# Usage
+
+## Install
+
+Install ```@sudo-nymd/cli-colors``` using NPM:
 
 ``` bash
-# Install dependencies. Gulp POSTINSTALL task will finish setup.
-npm install --silent 
+npm install @sudo-nymd/cli-colors
 ```
-### Gulp Tasks
+## The Basics
 
+``` javascript
+const cliColors = require('@sudo-nymd/cli-colors');
+
+console.log(cliColors.red('This text will be RED'));
+console.log(cliColors.bgYellow('This text will have a YELLOW background'));
 ```
-gulp --tasks
+
+Like other libraries, you can chain colors together:
+
+``` javascript
+console.log(cliColors.bgYellow.blue('This text will be BLUE with a YELLOW background'));
 ```
-### .ENV Files
 
-I always keep my ```.env``` out of git, but I always forget what I need to put in my ```.env``` when I first load the project from Git. My solution is to check in a ```sample.env``` with real keys but safe psuedo-values. 
+Italics, bold, hidden, reset, etc. are also supported:
 
-During the ```postInstall``` [Gulp] task, I copy the ```sample.env``` to ```.env```. This gives me a starting point that I can use to toggle my memory on what keys/values are needed for my app to run.
+``` javascript
+console.log(cliColors.bgYellow.magenta.bold('This text will be BOLD and BLUE with a MAGENTA background'));
+```
 
-[Chai]: https://www.chaijs.com/
-[Dotenv]: https://www.npmjs.com/package/dotenv
-[Gulp]: https://gulpjs.com/
-[Mocha]: https://mochajs.org/
-[TypeScript]: https://www.typescriptlang.org/
-[Webpack]: https://webpack.js.org/
-[Cross-Spawn]: https://www.npmjs.com/package/cross-spawn
+## Colors
+
+| Foreground Colors  | Background Colors | Bright Foreground Colors | Bright Background Colors |
+| ------- | ----------------- | ------------- | ------------------------ |
+| black   | bgBlack           | blackBright   | bgBlackBright            |
+| red     | bgRed             | redBright     | bgRedBright              |
+| green   | bgGreen           | greenBright   | bgGreenBright            |
+| yellow  | bgYellow          | yellowBright  | bgYellowBright           |
+| blue    | bgBlue            | blueBright    | bgBlueBright             |
+| magenta | bgMagenta         | magentaBright | bgMagentaBright          |
+| cyan    | bgCyan            | cyanBright    | bgCyanBright             |
+| white   | bgWhite           | whiteBright   | bgWhiteBright            |
+| gray    |                   |               |                          |
+| grey    |                   |               |                          |
+
+## Style Modifiers
+
+* dim
+* **bold**
+* hidden
+* _italic_
+* underline
+* inverse
+* ~~strikethrough~~
+* reset
+
+[ansi-colors]: https://www.npmjs.com/package/ansi-colors
+[chalk]: https://www.npmjs.com/package/chalk
+[cli-colors]: https://www.npmjs.com/package/cli-colors
+[colors]: https://www.npmjs.com/package/colors
