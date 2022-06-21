@@ -1,4 +1,5 @@
 import cliColors from './cli-colors';
+import { Symbols } from './arrows';
 import { AnsiStyleCodes } from './common/colors';
 import {
     ColorClass,
@@ -19,4 +20,5 @@ export {
     StyleCodeArray, 
     StyleCodeType, 
     StyleFunction, 
+    Symbols
 }
