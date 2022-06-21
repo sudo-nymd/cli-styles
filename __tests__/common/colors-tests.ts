@@ -7,9 +7,9 @@ describe(`It tests the "${ModuleName}" module.`, function() {
 
         AnsiStyleCodes.forEach((code) => {
             if(code.type === StyleCodeType.Color) {
-                console.log(`{ name: "${code.name}", value: [${code.value}], type: StyleCodeType.${StyleCodeType[code.type]}, class: ColorClass.${ColorClass[code.class] } },`)
+                //console.log(`{ name: "${code.name}", value: [${code.value}], type: StyleCodeType.${StyleCodeType[code.type]}, class: ColorClass.${ColorClass[code.class] } },`)
             } else {
-                console.log(`{ name: "${code.name}", value: [${code.value}], type: StyleCodeType.${StyleCodeType[code.type]} },`)
+                //console.log(`{ name: "${code.name}", value: [${code.value}], type: StyleCodeType.${StyleCodeType[code.type]} },`)
             }
             //console.log(`readonly ${key}: AllStyleCodes;`)
             //console.log(`{ name: key}`)

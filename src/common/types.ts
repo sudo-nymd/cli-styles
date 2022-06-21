@@ -56,13 +56,13 @@ interface StylesType<T> {
 
 export enum StyleCodeType {
     /** Indicates the style code type is Color. */
-    Color,
+    Color = 'color',
 
     /** Indicates the style code type is Modifier */
-    Modifier,
+    Modifier = 'modifier',
 
     /** Indicates the style code type is Transparent */
-    Transparent
+    Transparent = 'transparent'
 }
 
 export type StyleCode = {
