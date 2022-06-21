@@ -2,8 +2,6 @@
 
 A simple library for command line interface (CLI) colors.
 
-<img src="https://github.com/sudo-nymd/cli-colors/blob/master/screenshot1.png?raw=true"/>
-
 ## Does the World Need Another Colors Library?
 
 ### No.
@@ -61,6 +59,8 @@ console.log(cliColors.bgYellow.magenta.bold('This text will be BOLD and BLUE wit
 | white   | bgWhite           | whiteBright   | bgWhiteBright            |
 | gray    |                   |               |                          |
 | grey    |                   |               |                          |
+
+<img src="https://github.com/sudo-nymd/cli-colors/blob/master/screenshot1.png?raw=true"/>
 
 ## Style Modifiers
 
