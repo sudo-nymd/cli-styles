@@ -145,6 +145,9 @@ export interface ICliColors {
     yellowBright: StyleFunction;
 
     get codes(): ICliColorCodes;
+
+    encode(code: AnyStyleCode, text: string): string;
+
     terminate: StyleFunction;
 
     [key: string]: any;
