@@ -32,7 +32,8 @@ const TASK_CONFIG = {
             tscConfig.compilerOptions.outDir,
             ".nyc_output",
             "coverage",
-            "lib"
+            "lib",
+            "types"
         ]
     },
     TEST: {
