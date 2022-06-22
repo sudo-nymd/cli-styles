@@ -71,7 +71,7 @@ export type AnsiStyleCode = {
     name: string;
 }
 
-export enum AnsiColorTypes {
+export enum AnsiColorCodeTypes {
     Foreground = 1 << 0,
     Background = 1 << 1,
     Bright = 1 << 2,
@@ -81,7 +81,7 @@ export enum AnsiColorTypes {
 
 export type AnsiColorCode  = AnsiStyleCode & {
     type: AnsiStyleCodeTypes.Color;
-    colorType: AnsiColorTypes
+    colorType: AnsiColorCodeTypes
 }
 
 export type AnsiModifierCode = AnsiStyleCode & {

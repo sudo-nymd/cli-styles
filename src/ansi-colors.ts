@@ -1,6 +1,6 @@
 import * as util from 'util'
 import { AnsiStyleCodes } from "./common/colors";
-import { AnyStyleCode, IAnsiColors, AnsiStyleCode, AnsiStyleCodeTypes, AnsiColorTypes, StyleCodeDictionary, StyleFunction, AnsiColorCode } from "./common/types";
+import { AnyStyleCode, IAnsiColors, AnsiStyleCode, AnsiStyleCodeTypes, AnsiColorCodeTypes, StyleCodeDictionary, StyleFunction, AnsiColorCode } from "./common/types";
 
 class AnsiColors {
 
@@ -76,8 +76,8 @@ class AnsiColors {
             throw new TypeError(`Code of type "${type}" is not permitted for this operation! Type must be "${AnsiStyleCodeTypes.Color}".`)
         }
 
-        if (code.colorType !== AnsiColorTypes.Background && code.colorType !== AnsiColorTypes.BackgroundBright) {
-            throw new TypeError(`Code of class "${code.colorType}" is not permitted for this operation! Class must be either "${AnsiColorTypes.Background}" or "${AnsiColorTypes.BackgroundBright}".`);
+        if (code.colorType !== AnsiColorCodeTypes.Background && code.colorType !== AnsiColorCodeTypes.BackgroundBright) {
+            throw new TypeError(`Code of class "${code.colorType}" is not permitted for this operation! Class must be either "${AnsiColorCodeTypes.Background}" or "${AnsiColorCodeTypes.BackgroundBright}".`);
         }
 
         let newName = name.replace(/^(bg)/, '');
@@ -87,7 +87,7 @@ class AnsiColors {
             name: newName,
             value: [value[0] - 10, value[1] - 10],
             type: AnsiStyleCodeTypes.Color,
-            colorType: (code.colorType & AnsiColorTypes.Bright) ? AnsiColorTypes.ForegroundBright : AnsiColorTypes.Foreground
+            colorType: (code.colorType & AnsiColorCodeTypes.Bright) ? AnsiColorCodeTypes.ForegroundBright : AnsiColorCodeTypes.Foreground
         }
     }
 }
@@ -106,4 +106,4 @@ export default ansiColors;
  */
 export const ModuleName = 'cli-colors'
 
-export { AnsiColorTypes as AnsiColorClass, AnsiStyleCodeTypes as AnsiStyleCodeType, AnsiStyleCode, AnyStyleCode, StyleFunction }
+export { AnsiColorCodeTypes, AnsiStyleCodeTypes, AnsiStyleCode, AnyStyleCode, StyleFunction }

@@ -2,23 +2,24 @@ import ansiColors from './ansi-colors';
 import * as symbols from './symbols';
 import { AnsiStyleCodes } from './common/colors';
 import {
-    AnsiColorClass,
+    AnsiColorCodeTypes,
     AnsiStyleCode,
-    AnsiStyleCodeType,
+    AnsiStyleCodeTypes,
     StyleFunction
     } from './ansi-colors';
-import { AnsiColorCode, AnsiModifierCode, StyleCodeArray } from './common/types';
+
+import { AnsiColorCode, AnsiModifierCode, AnsiTransparentCode, StyleCodeArray } from './common/types';
 
 export default ansiColors;
 
 export { 
-    AnsiStyleCodes, 
-    AnsiColorClass, 
     AnsiColorCode, 
+    AnsiColorCodeTypes, 
     AnsiModifierCode, 
     AnsiStyleCode, 
+    AnsiStyleCodes, 
+    AnsiStyleCodeTypes, 
     StyleCodeArray, 
-    AnsiStyleCodeType, 
     StyleFunction, 
     symbols
 }
