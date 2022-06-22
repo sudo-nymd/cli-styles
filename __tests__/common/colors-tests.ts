@@ -3,7 +3,7 @@ import { AnsiColorCodeTypes, AnsiStyleCodeTypes } from '../../src/common/types';
 
 describe(`It tests the "${ModuleName}" module.`, function() {
 
-    it.skip(`Generates interfaces from the colors dictionary.`, function(done) {
+    it.skip(`Generates code from the colors dictionary.`, function(done) {
 
         AnsiStyleCodes.forEach((code) => {
             if(code.type === AnsiStyleCodeTypes.Color) {

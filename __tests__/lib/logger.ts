@@ -1,5 +1,5 @@
 
-import { redBright, yellowBright, greenBright, magentaBright, blueBright} from 'ansi-colors';
+import { redBright, yellowBright, greenBright, magentaBright, blueBright } from 'ansi-colors';
 const DEBUG = (process.env.DEBUG) ? true : false;
 type TestLogEntryType = "log" | "debug" | "warning" | "error";
 
@@ -25,7 +25,7 @@ type TestLog = {
 export const create = (source: string): TestLog => {
     return {
         source: source,
-        buffer: []        
+        buffer: []
     }
 }
 
@@ -77,19 +77,21 @@ export const flush = (log: TestLog) => {
     log.buffer.forEach((entry) => {
         const { message, type, source } = entry;
         const tab = "\t"
-        switch( type) {
+        switch (type) {
             case "warning":
                 console.warn(`${tab}${yellowBright(source)}: ${message}.`);
                 break;
 
             case "error":
-                console.error(`${tab}${redBright(source)}: ${yellowBright(message + '')}.`)
+                if (DEBUG) {
+                    console.error(`${tab}${redBright(source)}: ${yellowBright(message + '')}.`)
+                }
                 break;
 
             case "debug":
-                if(DEBUG) {
-                console.debug(tab + blueBright(source));
-                console.debug((message));
+                if (DEBUG) {
+                    console.debug(tab + blueBright(source));
+                    console.debug((message));
                 }
                 break;
 
@@ -107,8 +109,8 @@ export const flush = (log: TestLog) => {
  * @returns The checked log source value.
  */
 const checkSource = (log: TestLog, src?: string) => {
-    return (src !== null && src !== undefined && src.trim().length > 0) 
-        ? src.trim() 
+    return (src !== null && src !== undefined && src.trim().length > 0)
+        ? src.trim()
         : log.source
 }
 

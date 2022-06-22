@@ -1,3 +1,5 @@
-import { Arrows } from "./arrows";
+import { powerline } from "./arrows";
 
-export { Arrows }
+export { powerline }
+
+export const ModuleName = 'symbols'

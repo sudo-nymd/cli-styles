@@ -1,13 +1,12 @@
 import { AnsiColorCode, AnsiColorCodeTypes, AnsiStyleCode, AnsiStyleCodeTypes, AnyStyleCode } from './types';
 import { AnsiStyleCodes } from './colors';
 import * as util from 'util';
-import assert from 'assert';
 
 const transCode = AnsiStyleCodes.find((code) => {
     return code.name === 'transparent';
 });
 
-export const ModuleName = 'helpers';
+export const ModuleName = 'ansi-utils';
 
 /**
  * Encodes a string with the ansi escape color/modifier codes.
@@ -21,6 +20,36 @@ export const encode = (code: AnyStyleCode, text: string) => {
     }
     validateAnsiStyleCode(code as AnsiStyleCode);
     return util.format("\x1b[%sm%s\x1b[%sm", code.value[0], text, code.value[1]); 
+}
+
+/**
+ * Converts a foreground color code to it's corresponding color code.
+ * @param fgCode The foreground color code to convert.
+ * @returns The corresponding background color code.
+ */
+export const convertToBackground = (fgCode: AnsiColorCode): AnsiColorCode => {
+
+    validateAnsiColorCode(fgCode, {
+        name: '',
+        type: AnsiStyleCodeTypes.Color,
+        colorType: AnsiColorCodeTypes.Foreground | AnsiColorCodeTypes.ForegroundBright,
+        value: [0, 0]
+    })
+
+    const { name, type, value, colorType } = fgCode;
+
+    if (colorType !== AnsiColorCodeTypes.Foreground && colorType !== AnsiColorCodeTypes.ForegroundBright) {
+        throw new TypeError(`Invalid class "${colorType}": Class must be either "${AnsiColorCodeTypes.Foreground}" or "${AnsiColorCodeTypes.ForegroundBright}".`);
+    }
+
+    const newName = 'bg' + name[0].toUpperCase() + name.substring(1);
+
+    return {
+        name: newName,
+        value: [value[0] + 10, value[1] + 10],
+        type: type,
+        colorType: (colorType & AnsiColorCodeTypes.Bright) ? AnsiColorCodeTypes.BackgroundBright : AnsiColorCodeTypes.Background
+    }
 }
 
 export const convertToForeground = (backgroundCode: AnsiColorCode): AnsiColorCode => {

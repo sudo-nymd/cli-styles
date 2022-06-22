@@ -1,7 +1,7 @@
 import * as util from 'util';
 import { AnsiStyleCodes } from "./common/colors";
 import { AnyStyleCode, IAnsiColors, AnsiStyleCode, AnsiStyleCodeTypes, AnsiColorCodeTypes, StyleCodeDictionary, StyleFunction, AnsiColorCode } from "./common/types";
-import * as helpers from './common/helpers';
+import * as ansiUtils from './common/ansi-utils';
 
 class AnsiColors {
 
@@ -24,10 +24,10 @@ class AnsiColors {
                         self._stack.push(code)
                         const fmt = (text: string) => {
                             for (var code of self._stack.reverse()) {
-                                text = helpers.encode(code as AnyStyleCode, text); 
+                                text = ansiUtils.encode(code as AnyStyleCode, text); 
                             }
                             self._stack = [];
-                            return helpers.terminate(text);
+                            return ansiUtils.terminate(text);
                         }
 
                         fmt.__proto__ = self;
