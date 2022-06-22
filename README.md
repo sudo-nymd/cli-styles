@@ -1,8 +1,8 @@
-# @sudo-nymd/cli-colors
+# @sudo-nymd/cli-styles
 
 A simple library for command line interface (CLI) colors.
 
-## Does the World Need Another Colors Library?
+## Does the World Need Another CLI Styles Library?
 
 ### No.
 
