@@ -83,8 +83,6 @@ console.log(
 | gray    |                   |               |                          |
 | grey    |                   |               |                          |
 
-<img src="https://github.com/sudo-nymd/cli-styles/blob/master/screenshot1.png?raw=true" width="200"/>
-
 ## Style Modifiers
 
 Style modifiers like ```italics```, ```bold```, ```hidden```, ```reset```, etc. are also supported:
