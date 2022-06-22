@@ -16,11 +16,12 @@ There are already plenty of ```great``` CLI style & color libraries out there:
 ```@sudo-nymd/cli-styles``` is purely a "vanity" project to sharpen my "vanilla" JavaScript/TypeScript skills. Feel free to use it if you like. ```@sudo-nymd/cli-styles``` provides a familiar API, plus a few utilities that I needed for a project.
 
 
-| Foreground Colors  | Background Colors |
-| ------- | ----------------- | 
-|    |            | 
-
 <table>
+<tr>
+    <td colspan="2">
+        <img src="https://github.com/sudo-nymd/cli-styles/raw/master/images/ansi-styles.png" />
+    </td>
+</tr>
 <tr>
     <td>
         <img src="https://github.com/sudo-nymd/cli-styles/raw/master/images/foreground-colors.png" width="300"/>
@@ -29,6 +30,7 @@ There are already plenty of ```great``` CLI style & color libraries out there:
         <img src="https://github.com/sudo-nymd/cli-styles/raw/master/images/background-colors.png" width="300"/>
     </td>
 </tr>
+</table>
 
 
 
