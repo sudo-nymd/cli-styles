@@ -135,17 +135,19 @@ Encodes a string with the ansi escape color/modifier codes.
 
 ``` javascript
 
-const { ansiColors, ansiUtils } from "@sudo-nymd/cli-styles";
+const { ansiStyles, ansiUtils } = require("@sudo-nymd/cli-styles");
 
 const styled = ansiUtils.encode(
-    'This text will have a YELLOW background',
-    ansiStyles.codes.bgYellow
+    'This text will have a BLUE background',
+    ansiStyles.codes.bgBlue
 );
 
 console.log(styled);
 ```
 
 Outputs to ```STDOUT``` the escaped text ```\x1b[43mThis text will have a YELLOW background\x1b[49m``` which will set the background to yellow.
+
+<img src="https://github.com/sudo-nymd/cli-styles/raw/master/images/ansi-utils_encode.png" />
 
 ### terminate()
 
