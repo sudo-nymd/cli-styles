@@ -27,22 +27,22 @@ npm install @sudo-nymd/cli-styles
 ## The Basics
 
 ``` javascript
-const cliStyles = require('@sudo-nymd/cli-styles');
+const ansiStyles = require('@sudo-nymd/cli-styles');
 
-console.log(cliStyles.red('This text will be RED'));
-console.log(cliStyles.bgYellow('This text will have a YELLOW background'));
+console.log(ansiStyles.red('This text will be RED'));
+console.log(ansiStyles.bgYellow('This text will have a YELLOW background'));
 ```
 
 Like other libraries, you can chain colors together:
 
 ``` javascript
-console.log(cliStyles.bgYellow.blue('This text will be BLUE with a YELLOW background'));
+console.log(ansiStyles.bgYellow.blue('This text will be BLUE with a YELLOW background'));
 ```
 
 Italics, bold, hidden, reset, etc. are also supported:
 
 ``` javascript
-console.log(cliStyles.bgYellow.magenta.bold('This text will be BOLD and BLUE with a MAGENTA background'));
+console.log(ansiStyles.bgYellow.magenta.bold('This text will be BOLD and BLUE with a MAGENTA background'));
 ```
 
 ## Colors

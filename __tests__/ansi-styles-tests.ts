@@ -74,7 +74,7 @@ describe(`It tests the "${ModuleName}" module.`, function () {
         const keys = Object.keys(AnsiStyleCodes);
         const expectedLength = keys.length;
         const actualLength = Object.keys(ansiStyles.codes).length;
-        expect(actualLength, 'Invalid count of cliStyles.codes properties.').to.equal(expectedLength);
+        expect(actualLength, 'Invalid count of ansiStyles.codes properties.').to.equal(expectedLength);
 
         AnsiStyleCodes.forEach(function (code) {
             const func = ansiStyles[code.name] as StyleFunction;
@@ -98,7 +98,7 @@ describe(`It tests the "${ModuleName}" module.`, function () {
                 const n_1 = AnsiStyleCodes[count].name;
                 //const n_2 = AnsiStyleCodes[count + 1].name;
                 const f_1 = ansiStyles[n_1] as StyleFunction;
-                //const f_2 = cliStyles[n_2] as StyleFunction;
+                //const f_2 = ansiStyles[n_2] as StyleFunction;
                 const v_1 = f_1(n_1);
                 //const v_2 = f_2(n_2);
 
