@@ -1,6 +1,6 @@
 import * as util from 'util'
 import { AnsiStyleCodes } from "./common/colors";
-import { AnyStyleCode, IAnsiColors, AnsiStyleCode, AnsiStyleCodeType, AnsiColorTypes, StyleCodeDictionary, StyleFunction, AnsiColorCode } from "./common/types";
+import { AnyStyleCode, IAnsiColors, AnsiStyleCode, AnsiStyleCodeTypes, AnsiColorTypes, StyleCodeDictionary, StyleFunction, AnsiColorCode } from "./common/types";
 
 class AnsiColors {
 
@@ -72,8 +72,8 @@ class AnsiColors {
 
         const { name, type, value } = code;
 
-        if (type !== AnsiStyleCodeType.Color) {
-            throw new TypeError(`Code of type "${type}" is not permitted for this operation! Type must be "${AnsiStyleCodeType.Color}".`)
+        if (type !== AnsiStyleCodeTypes.Color) {
+            throw new TypeError(`Code of type "${type}" is not permitted for this operation! Type must be "${AnsiStyleCodeTypes.Color}".`)
         }
 
         if (code.colorType !== AnsiColorTypes.Background && code.colorType !== AnsiColorTypes.BackgroundBright) {
@@ -86,7 +86,7 @@ class AnsiColors {
         return {
             name: newName,
             value: [value[0] - 10, value[1] - 10],
-            type: AnsiStyleCodeType.Color,
+            type: AnsiStyleCodeTypes.Color,
             colorType: (code.colorType & AnsiColorTypes.Bright) ? AnsiColorTypes.ForegroundBright : AnsiColorTypes.Foreground
         }
     }
@@ -106,4 +106,4 @@ export default ansiColors;
  */
 export const ModuleName = 'cli-colors'
 
-export { AnsiColorTypes as AnsiColorClass, AnsiStyleCodeType, AnsiStyleCode, AnyStyleCode, StyleFunction }
+export { AnsiColorTypes as AnsiColorClass, AnsiStyleCodeTypes as AnsiStyleCodeType, AnsiStyleCode, AnyStyleCode, StyleFunction }
