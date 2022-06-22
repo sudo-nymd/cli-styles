@@ -1,6 +1,7 @@
-import * as util from 'util'
+import * as util from 'util';
 import { AnsiStyleCodes } from "./common/colors";
 import { AnyStyleCode, IAnsiColors, AnsiStyleCode, AnsiStyleCodeTypes, AnsiColorCodeTypes, StyleCodeDictionary, StyleFunction, AnsiColorCode } from "./common/types";
+import * as helpers from './common/helpers';
 
 class AnsiColors {
 
@@ -23,10 +24,10 @@ class AnsiColors {
                         self._stack.push(code)
                         const fmt = (text: string) => {
                             for (var code of self._stack.reverse()) {
-                                text = self.encode(code as AnyStyleCode, text); // "\x1b[" + d.value[0] + "m" + text + "\x1b[" + d.value[1] + "m";
+                                text = helpers.encode(code as AnyStyleCode, text); 
                             }
                             self._stack = [];
-                            return self.terminate(text);
+                            return helpers.terminate(text);
                         }
 
                         fmt.__proto__ = self;
@@ -45,51 +46,6 @@ class AnsiColors {
         return this._codes;
     }
 
-    /**
-     * Encodes a string with the ansi escape color/modifier codes.
-     * @param code The ansi code to use.
-     * @param text The text to encode.
-     * @returns The encoded stext.
-     */
-    public encode(code: AnyStyleCode, text: string) {
-        return util.format("\x1b[%sm%s\x1b[%sm", code.value[0], text, code.value[1]); // "\x1b[" + d.value[0] + "m" + text + "\x1b[" + d.value[1] + "m";
-    }
-
-    /**
-     * Terminates the text with the ansi reset code (0).
-     * @param text The text to terminate.
-     * @returns The text terminated with the reset escape code (0).
-     */
-    public terminate(text: string) {
-        return util.format("%s\x1b[0m", text);
-    }
-
-    public bgToFG(code: AnsiColorCode): AnsiColorCode {
-
-        if (code === undefined || code === null) {
-            throw new ReferenceError('Code cannot be undefined or null!');
-        }
-
-        const { name, type, value } = code;
-
-        if (type !== AnsiStyleCodeTypes.Color) {
-            throw new TypeError(`Code of type "${type}" is not permitted for this operation! Type must be "${AnsiStyleCodeTypes.Color}".`)
-        }
-
-        if (code.colorType !== AnsiColorCodeTypes.Background && code.colorType !== AnsiColorCodeTypes.BackgroundBright) {
-            throw new TypeError(`Code of class "${code.colorType}" is not permitted for this operation! Class must be either "${AnsiColorCodeTypes.Background}" or "${AnsiColorCodeTypes.BackgroundBright}".`);
-        }
-
-        let newName = name.replace(/^(bg)/, '');
-        newName = newName[0].toLowerCase() + newName.substring(1);
-
-        return {
-            name: newName,
-            value: [value[0] - 10, value[1] - 10],
-            type: AnsiStyleCodeTypes.Color,
-            colorType: (code.colorType & AnsiColorCodeTypes.Bright) ? AnsiColorCodeTypes.ForegroundBright : AnsiColorCodeTypes.Foreground
-        }
-    }
 }
 
 const createInstance = (): IAnsiColors => {

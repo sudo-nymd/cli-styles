@@ -88,18 +88,6 @@ describe(`It tests the "${ModuleName}" module.`, function () {
 
         done();
     })
-
-    it(`Tests the terminate() method.`, function (done) {
-
-        const text = Math.random().toString();
-        const expected = util.format("%s\x1b[0m", text);
-        const actual = ansiColors.terminate(text);
-
-        debug({ expected, actual});
-
-        expect(actual).to.equal(expected);
-        done();
-    });
     
     it.skip(`Samples for screenshots.`, function (done) {
         let count = 0;
@@ -125,14 +113,4 @@ describe(`It tests the "${ModuleName}" module.`, function () {
         done();
     });
 
-    it(`Tests the bgToFG() method.`, function(done) {
-        
-        // @ts-ignore Test null code
-        expect(() => ansiColors.bgToFG(null)).to.throw(ReferenceError);
-
-        // @ts-ignore Test undefined code
-        expect(() => ansiColors.bgToFG()).to.throw(ReferenceError);
-        
-        done();
-    })
 })

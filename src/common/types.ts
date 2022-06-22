@@ -76,7 +76,8 @@ export enum AnsiColorCodeTypes {
     Background = 1 << 1,
     Bright = 1 << 2,
     ForegroundBright = Foreground | Bright,
-    BackgroundBright = Background | Bright
+    BackgroundBright = Background | Bright,
+    Transparent = 1 << 32
 }
 
 export type AnsiColorCode  = AnsiStyleCode & {
@@ -99,7 +100,6 @@ export type StyleCodeDictionary<T> = {
 export type StyleCodeArray<T> = Array<T>;
 
 export type AnyStyleCode = AnsiColorCode | AnsiModifierCode | AnsiTransparentCode;
-
 export interface IAnsiColors {
     bgBlack: StyleFunction;
     bgBlackBright: StyleFunction;
@@ -146,11 +146,11 @@ export interface IAnsiColors {
 
     get codes(): IAnsiColorCodes;
 
-    encode(code: AnsiColorCode, text: string): string;
+    // encode(code: AnsiColorCode, text: string): string;
 
-    bgToFG(code: AnsiColorCode): AnsiColorCode;
+    // bgToFG(code: AnsiColorCode): AnsiColorCode;
 
-    terminate: StyleFunction;
+    // terminate: StyleFunction;
 
     [key: string]: any;
 }
@@ -196,6 +196,7 @@ export interface IAnsiColorCodes {
     readonly whiteBright: AnsiColorCode;
     readonly yellow: AnsiColorCode;
     readonly yellowBright: AnsiColorCode;
+    readonly transparent: AnsiColorCode;
 
     [key: string]: AnyStyleCode;
 }

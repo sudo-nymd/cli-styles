@@ -1,6 +1,7 @@
-import { AnyStyleCode, AnsiColorCodeTypes, AnsiColorCode, AnsiModifierCode, StyleCodeArray, AnsiStyleCodeTypes } from './types';
+import { AnyStyleCode, AnsiColorCodeTypes, StyleCodeArray, AnsiStyleCodeTypes } from './types';
+import { TRANSPARENT_COLOR_CODE } from './transparent';
 
-export const AnsiStyleCodes: StyleCodeArray<AnyStyleCode> = [
+const AnsiStyleCodes: StyleCodeArray<AnyStyleCode> = [
 
     // COLORS
     { name: "bgBlack", value: [40, 49], type: AnsiStyleCodeTypes.Color, colorType: AnsiColorCodeTypes.Background },
@@ -47,9 +48,13 @@ export const AnsiStyleCodes: StyleCodeArray<AnyStyleCode> = [
     { name: "inverse", value: [7, 27], type: AnsiStyleCodeTypes.Modifier },
     { name: "hidden", value: [8, 28], type: AnsiStyleCodeTypes.Modifier },
     { name: "strikethrough", value: [9, 29], type: AnsiStyleCodeTypes.Modifier },
-
 ]
+
+AnsiStyleCodes.push(TRANSPARENT_COLOR_CODE);
+
 /**
  * Export module name for test runners.
  */
-export const ModuleName = 'colors'
+const ModuleName = 'colors'
+
+export { ModuleName, AnsiStyleCodes }
