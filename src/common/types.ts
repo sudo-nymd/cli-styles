@@ -54,7 +54,7 @@ interface AnsiStylesType<T> {
 }
 
 
-export enum StyleCodeType {
+export enum AnsiStyleCodeType {
     /** Indicates the style code type is Color. */
     Color = 'color',
 
@@ -67,7 +67,7 @@ export enum StyleCodeType {
 
 export type AnsiStyleCode = {
     value: [number, number] | number[];
-    type: StyleCodeType;
+    type: AnsiStyleCodeType;
     name: string;
 }
 
@@ -80,16 +80,16 @@ export enum AnsiColorClass {
 }
 
 export type AnsiColorCode  = AnsiStyleCode & {
-    type: StyleCodeType.Color;
+    type: AnsiStyleCodeType.Color;
     class: AnsiColorClass
 }
 
 export type AnsiModifierCode = AnsiStyleCode & {
-    type: StyleCodeType.Modifier;
+    type: AnsiStyleCodeType.Modifier;
 }
 
 export type AnsiTransparentCode = AnsiStyleCode & {
-    type: StyleCodeType.Transparent;
+    type: AnsiStyleCodeType.Transparent;
 }
 
 export type StyleCodeDictionary<T> = {

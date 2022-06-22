@@ -1,24 +1,24 @@
-import cliColors from './cli-colors';
+import ansiColors from './ansi-colors';
 import * as symbols from './symbols';
 import { AnsiStyleCodes } from './common/colors';
 import {
-    ColorClass,
-    StyleCode,
-    StyleCodeType,
+    AnsiColorClass,
+    AnsiStyleCode,
+    AnsiStyleCodeType,
     StyleFunction
-    } from './cli-colors';
+    } from './ansi-colors';
 import { AnsiColorCode, AnsiModifierCode, StyleCodeArray } from './common/types';
 
-export default cliColors;
+export default ansiColors;
 
 export { 
     AnsiStyleCodes, 
-    ColorClass, 
-    AnsiColorCode as ColorCode, 
-    AnsiModifierCode as ModifierCode, 
-    StyleCode, 
+    AnsiColorClass, 
+    AnsiColorCode, 
+    AnsiModifierCode, 
+    AnsiStyleCode, 
     StyleCodeArray, 
-    StyleCodeType, 
+    AnsiStyleCodeType, 
     StyleFunction, 
     symbols
 }

@@ -1,8 +1,8 @@
 import * as util from 'util'
 import { AnsiStyleCodes } from "./common/colors";
-import { AnyStyleCode, IAnsiColors, AnsiStyleCode, StyleCodeType, AnsiColorClass, StyleCodeDictionary, StyleFunction, AnsiColorCode } from "./common/types";
+import { AnyStyleCode, IAnsiColors, AnsiStyleCode, AnsiStyleCodeType, AnsiColorClass, StyleCodeDictionary, StyleFunction, AnsiColorCode } from "./common/types";
 
-class CliColors {
+class AnsiColors {
 
     private _stack: AnsiStyleCode[];
     private _codes: StyleCodeDictionary<AnyStyleCode>;    
@@ -37,7 +37,7 @@ class CliColors {
 
             self._codes[code.name] = code;
             
-            Object.defineProperties(CliColors.prototype, colorObj);
+            Object.defineProperties(AnsiColors.prototype, colorObj);
         });
     }
 
@@ -72,8 +72,8 @@ class CliColors {
 
         const { name, type, value } = code;
 
-        if (type !== StyleCodeType.Color) {
-            throw new TypeError(`Code of type "${type}" is not permitted for this operation! Type must be "${StyleCodeType.Color}".`)
+        if (type !== AnsiStyleCodeType.Color) {
+            throw new TypeError(`Code of type "${type}" is not permitted for this operation! Type must be "${AnsiStyleCodeType.Color}".`)
         }
 
         if (code.class !== AnsiColorClass.Background && code.class !== AnsiColorClass.BackgroundBright) {
@@ -86,24 +86,24 @@ class CliColors {
         return {
             name: newName,
             value: [value[0] - 10, value[1] - 10],
-            type: StyleCodeType.Color,
+            type: AnsiStyleCodeType.Color,
             class: (code.class & AnsiColorClass.Bright) ? AnsiColorClass.ForegroundBright : AnsiColorClass.Foreground
         }
     }
 }
 
 const createInstance = (): IAnsiColors => {
-    const cliColors: unknown = new CliColors();
-    return cliColors as IAnsiColors;
+    const ansiColors: unknown = new AnsiColors();
+    return ansiColors as IAnsiColors;
 }
 
-const cliColors = createInstance();
+const ansiColors = createInstance();
 
-export default cliColors;
+export default ansiColors;
 
 /**
  * Export module name for test runners.
  */
 export const ModuleName = 'cli-colors'
 
-export { AnsiColorClass as ColorClass, StyleCodeType, AnsiStyleCode as StyleCode, AnyStyleCode, StyleFunction }
+export { AnsiColorClass, AnsiStyleCodeType, AnsiStyleCode, AnyStyleCode, StyleFunction }
