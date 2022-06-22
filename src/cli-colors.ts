@@ -1,6 +1,6 @@
 import * as util from 'util'
 import { AnsiStyleCodes } from "./common/colors";
-import { AnyStyleCode, ICliColors, StyleCode, StyleCodeType, ColorClass, StyleCodeDictionary, StyleFunction } from "./common/types";
+import { AnyStyleCode, ICliColors, StyleCode, StyleCodeType, ColorClass, StyleCodeDictionary, StyleFunction, ColorCode } from "./common/types";
 
 class CliColors {
 
@@ -62,6 +62,33 @@ class CliColors {
      */
     public terminate(text: string) {
         return util.format("%s\x1b[0m", text);
+    }
+
+    public bgToFG(code: ColorCode): ColorCode {
+
+        if (code === undefined || code === null) {
+            throw new ReferenceError('Code cannot be undefined or null!');
+        }
+
+        const { name, type, value } = code;
+
+        if (type !== StyleCodeType.Color) {
+            throw new TypeError(`Code of type "${type}" is not permitted for this operation! Type must be "${StyleCodeType.Color}".`)
+        }
+
+        if (code.class !== ColorClass.Background && code.class !== ColorClass.BackgroundBright) {
+            throw new TypeError(`Code of class "${code.class}" is not permitted for this operation! Class must be either "${ColorClass.Background}" or "${ColorClass.BackgroundBright}".`);
+        }
+
+        let newName = name.replace(/^(bg)/, '');
+        newName = newName[0].toLowerCase() + newName.substring(1);
+
+        return {
+            name: newName,
+            value: [value[0] - 10, value[1] - 10],
+            type: StyleCodeType.Color,
+            class: (code.class & ColorClass.Bright) ? ColorClass.ForegroundBright : ColorClass.Foreground
+        }
     }
 }
 
