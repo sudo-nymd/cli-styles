@@ -1,12 +1,12 @@
 # @sudo-nymd/cli-styles
 
-A simple library for command line interface (CLI) colors.
+A simple library for command line interface (CLI) styles.
 
 ## Does the World Need Another CLI Styles Library?
 
 ### No.
 
-There are already plenty of ```great``` CLI color libraries out there:
+There are already plenty of ```great``` CLI style & color libraries out there:
 
 * [chalk]
 * [colors]
@@ -30,11 +30,11 @@ npm install @sudo-nymd/cli-styles
 const ansiStyles = require('@sudo-nymd/cli-styles');
 
 console.log(
-    ansiStyles.red('This text will be RED')
+    ansiStyles.red('This text will be RED');
 );
 
 console.log(
-    ansiStyles.bgYellow('This text will have a YELLOW background')
+    ansiStyles.bgYellow('This text will have a YELLOW background');
 );
 ```
 
@@ -44,18 +44,7 @@ Like other libraries, you can chain colors together:
 console.log(
     ansiStyles
         .bgYellow
-        .blue('This text will be BLUE with a YELLOW background')
-);
-```
-
-Italics, bold, hidden, reset, etc. are also supported:
-
-``` javascript
-console.log(
-    ansiStyles
-        .bgYellow
-        .magenta
-        .bold('This text will be BOLD and BLUE with a MAGENTA background')
+        .blue('This text will be BLUE with a YELLOW background');
 );
 ```
 
@@ -87,6 +76,32 @@ console.log(
 * ~~strikethrough~~
 * reset
 
+Style modifiers like ```italics```, ```bold```, ```hidden```, ```reset```, etc. are also supported:
+
+``` javascript
+
+console.log(
+    ansiStyles.bold('This text will be BOLD');
+);
+
+console.log(
+    ansiStyles.italic('This text will be in ITALICS.');
+);
+
+console.log(
+    ansiStyles
+        .bold
+        .italic
+        .unerline('This text will be BOLD, in ITALICS, and UNDERLINED.');
+);
+
+console.log(
+    ansiStyles
+        .bgYellow
+        .magenta
+        .bold('This text will be BOLD and BLUE with a MAGENTA background');
+);
+```
 
 [ansi-colors]: https://www.npmjs.com/package/ansi-colors
 [chalk]: https://www.npmjs.com/package/chalk
