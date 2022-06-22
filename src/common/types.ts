@@ -100,7 +100,7 @@ export type StyleCodeDictionary<T> = {
 export type StyleCodeArray<T> = Array<T>;
 
 export type AnyStyleCode = AnsiColorCode | AnsiModifierCode | AnsiTransparentCode;
-export interface IAnsiColors {
+export interface IAnsiStyles {
     bgBlack: StyleFunction;
     bgBlackBright: StyleFunction;
     bgBlue: StyleFunction;
@@ -144,7 +144,7 @@ export interface IAnsiColors {
     yellow: StyleFunction;
     yellowBright: StyleFunction;
 
-    get codes(): IAnsiColorCodes;
+    get codes(): IAnsiStyleCodes;
 
     // encode(code: AnsiColorCode, text: string): string;
 
@@ -155,7 +155,7 @@ export interface IAnsiColors {
     [key: string]: any;
 }
 
-export interface IAnsiColorCodes {
+export interface IAnsiStyleCodes {
     readonly bgBlack: AnsiColorCode;
     readonly bgBlackBright: AnsiColorCode;
     readonly bgBlue: AnsiColorCode;

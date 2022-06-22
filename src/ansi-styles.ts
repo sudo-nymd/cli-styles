@@ -1,9 +1,9 @@
 import * as util from 'util';
 import { AnsiStyleCodes } from "./common/colors";
-import { AnyStyleCode, IAnsiColors, AnsiStyleCode, AnsiStyleCodeTypes, AnsiColorCodeTypes, StyleCodeDictionary, StyleFunction, AnsiColorCode } from "./common/types";
+import { AnyStyleCode, IAnsiStyles, AnsiStyleCode, AnsiStyleCodeTypes, AnsiColorCodeTypes, StyleCodeDictionary, StyleFunction, AnsiColorCode } from "./common/types";
 import * as ansiUtils from './common/ansi-utils';
 
-class AnsiColors {
+class AnsiStyles {
 
     private _stack: AnsiStyleCode[];
     private _codes: StyleCodeDictionary<AnyStyleCode>;    
@@ -24,7 +24,7 @@ class AnsiColors {
                         self._stack.push(code)
                         const fmt = (text: string) => {
                             for (var code of self._stack.reverse()) {
-                                text = ansiUtils.encode(code as AnyStyleCode, text); 
+                                text = ansiUtils.encode(text, code as AnyStyleCode); 
                             }
                             self._stack = [];
                             return ansiUtils.terminate(text);
@@ -38,7 +38,7 @@ class AnsiColors {
 
             self._codes[code.name] = code;
             
-            Object.defineProperties(AnsiColors.prototype, colorObj);
+            Object.defineProperties(AnsiStyles.prototype, colorObj);
         });
     }
 
@@ -48,18 +48,18 @@ class AnsiColors {
 
 }
 
-const createInstance = (): IAnsiColors => {
-    const ansiColors: unknown = new AnsiColors();
-    return ansiColors as IAnsiColors;
+const createInstance = (): IAnsiStyles => {
+    const ansiStyles: unknown = new AnsiStyles();
+    return ansiStyles as IAnsiStyles;
 }
 
-const ansiColors = createInstance();
+const ansiStyles = createInstance();
 
-export default ansiColors;
+export default ansiStyles;
 
 /**
  * Export module name for test runners.
  */
-export const ModuleName = 'cli-styles'
+export const ModuleName = 'ansi-styles'
 
 export { AnsiColorCodeTypes, AnsiStyleCodeTypes, AnsiStyleCode, AnyStyleCode, StyleFunction }

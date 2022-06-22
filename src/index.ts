@@ -1,4 +1,4 @@
-import ansiColors from './ansi-styles';
+import ansiStyles from './ansi-styles';
 import * as ansiUtils from './common/ansi-utils';
 
 //import * as symbols from './symbols';
@@ -12,8 +12,6 @@ import {
 
 import { AnsiColorCode, AnsiModifierCode, StyleCodeArray } from './common/types';
 
-export default ansiColors;
-
 export { 
     AnsiColorCode, 
     AnsiColorCodeTypes, 
@@ -21,6 +19,7 @@ export {
     AnsiStyleCode, 
     AnsiStyleCodes, 
     AnsiStyleCodeTypes, 
+    ansiStyles,
     ansiUtils,
     StyleCodeArray, 
     StyleFunction, 

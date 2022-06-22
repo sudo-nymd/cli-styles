@@ -14,7 +14,7 @@ export const ModuleName = 'ansi-utils';
  * @param text The text to encode.
  * @returns The encoded stext.
 */
-export const encode = (code: AnyStyleCode, text: string) => {
+export const encode = (text: string, code: AnyStyleCode) => {
     if (text === null || text === undefined) {
         throw new ReferenceError(`Argument [text] cannot be "${text}"!`)
     }

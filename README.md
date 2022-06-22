@@ -67,15 +67,6 @@ console.log(
 
 ## Style Modifiers
 
-* dim
-* **bold**
-* hidden
-* _italic_
-* underline
-* inverse
-* ~~strikethrough~~
-* reset
-
 Style modifiers like ```italics```, ```bold```, ```hidden```, ```reset```, etc. are also supported:
 
 ``` javascript
@@ -102,6 +93,41 @@ console.log(
         .bold('This text will be BOLD and BLUE with a MAGENTA background');
 );
 ```
+The following style modifiers are supported:
+
+* dim
+* **bold**
+* hidden
+* _italic_
+* underline
+* inverse
+* ~~strikethrough~~
+* reset
+* transparent (Needs a background color to work... A utility function is provided in ```ansi-utils``` module.)
+
+## Utility Functions
+
+### transparent()
+
+### encode(text: string, code: AnyStyleCode)
+
+Encodes a string with the ansi escape color/modifier codes.
+
+``` javascript
+
+const { ansiColors, ansiUtils } from "@sudo-nymd/cli-styles";
+
+const styled = ansiUtils.encode(
+    'This text will have a YELLOW background',
+    ansiStyles.codes.bgYellow
+);
+
+console.log(styled);
+```
+
+Outputs to ```STDOUT``` the escaped text ```\x1b[43mThis text will have a YELLOW background\x1b[49m``` which will set the background to yellow.
+
+### terminate()
 
 [ansi-colors]: https://www.npmjs.com/package/ansi-colors
 [chalk]: https://www.npmjs.com/package/chalk

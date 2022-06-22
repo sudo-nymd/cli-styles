@@ -4,7 +4,7 @@ import * as util from 'util';
 import { expect } from 'chai';
 import * as ansiUtils from '../../src/common/ansi-utils';
 import { AnsiStyleCode, AnsiStyleCodeTypes, AnsiColorCodeTypes } from '../../src/common/types';
-import ansiColors from '../../src/ansi-styles';
+import ansiStyles from '../../src/ansi-styles';
 
 // "Stateless" logging functions (avoid clashes with Mocha's hijackng of "this")
 const LOGENTRY = logger.create(ansiUtils.ModuleName);
@@ -14,20 +14,20 @@ const error = (msg: string | object, src?: string) => logger.error(LOGENTRY, msg
 const warn = (msg: string | object, src?: string) => logger.warn(LOGENTRY, msg, src);
 
 const BG_CODE_FG_CODE_MAP = [
-    { bg: ansiColors.codes.bgBlack, fg: ansiColors.codes.black },
-    { bg: ansiColors.codes.bgBlackBright, fg: ansiColors.codes.blackBright },
-    { bg: ansiColors.codes.bgBlue, fg: ansiColors.codes.blue },
-    { bg: ansiColors.codes.bgBlueBright, fg: ansiColors.codes.blueBright },
-    { bg: ansiColors.codes.bgCyan, fg: ansiColors.codes.cyan },
-    { bg: ansiColors.codes.bgCyanBright, fg: ansiColors.codes.cyanBright },
-    { bg: ansiColors.codes.bgGreen, fg: ansiColors.codes.green },
-    { bg: ansiColors.codes.bgGreenBright, fg: ansiColors.codes.greenBright },
-    { bg: ansiColors.codes.bgMagenta, fg: ansiColors.codes.magenta },
-    { bg: ansiColors.codes.bgMagentaBright, fg: ansiColors.codes.magentaBright },
-    { bg: ansiColors.codes.bgRed, fg: ansiColors.codes.red },
-    { bg: ansiColors.codes.bgRedBright, fg: ansiColors.codes.redBright },
-    { bg: ansiColors.codes.bgYellow, fg: ansiColors.codes.yellow },
-    { bg: ansiColors.codes.bgYellowBright, fg: ansiColors.codes.yellowBright },
+    { bg: ansiStyles.codes.bgBlack, fg: ansiStyles.codes.black },
+    { bg: ansiStyles.codes.bgBlackBright, fg: ansiStyles.codes.blackBright },
+    { bg: ansiStyles.codes.bgBlue, fg: ansiStyles.codes.blue },
+    { bg: ansiStyles.codes.bgBlueBright, fg: ansiStyles.codes.blueBright },
+    { bg: ansiStyles.codes.bgCyan, fg: ansiStyles.codes.cyan },
+    { bg: ansiStyles.codes.bgCyanBright, fg: ansiStyles.codes.cyanBright },
+    { bg: ansiStyles.codes.bgGreen, fg: ansiStyles.codes.green },
+    { bg: ansiStyles.codes.bgGreenBright, fg: ansiStyles.codes.greenBright },
+    { bg: ansiStyles.codes.bgMagenta, fg: ansiStyles.codes.magenta },
+    { bg: ansiStyles.codes.bgMagentaBright, fg: ansiStyles.codes.magentaBright },
+    { bg: ansiStyles.codes.bgRed, fg: ansiStyles.codes.red },
+    { bg: ansiStyles.codes.bgRedBright, fg: ansiStyles.codes.redBright },
+    { bg: ansiStyles.codes.bgYellow, fg: ansiStyles.codes.yellow },
+    { bg: ansiStyles.codes.bgYellowBright, fg: ansiStyles.codes.yellowBright },
 ]
 const BG_CODE_FG_CODE_OFFSET = 10;
 
@@ -75,9 +75,9 @@ describe(`It tests the "${ansiUtils.ModuleName}" module.`, function () {
         // Test that proper errors are thrown
         [
             // Null text
-            { text: null, code: ansiColors.codes.bgBlack, error: ReferenceError },
+            { text: null, code: ansiStyles.codes.bgBlack, error: ReferenceError },
             // Undefined text
-            { text: undefined, code: ansiColors.codes.bgBlack, error: ReferenceError },
+            { text: undefined, code: ansiStyles.codes.bgBlack, error: ReferenceError },
             // Null code
             { text: 'Test', code: null, error: ReferenceError },
             // Undefined code
@@ -86,7 +86,7 @@ describe(`It tests the "${ansiUtils.ModuleName}" module.`, function () {
             expect(() => {
                 try {
                     // @ts-ignore
-                    ansiUtils.encode(test.code, test.text);
+                    ansiUtils.encode(test.text, test.code);
                 } catch (e) {
                     error(e as Error)
                     throw e;
@@ -100,11 +100,11 @@ describe(`It tests the "${ansiUtils.ModuleName}" module.`, function () {
         // Test that proper errors are thrown
         [
             // Null text
-            { text: null, error: ReferenceError, code: ansiColors.codes.bgBlack },
+            { text: null, error: ReferenceError, code: ansiStyles.codes.bgBlack },
             // Undefined text
-            { text: undefined, error: ReferenceError, code: ansiColors.codes.bgBlack },
+            { text: undefined, error: ReferenceError, code: ansiStyles.codes.bgBlack },
             // Empty text
-            { text: '', error: ReferenceError, code: ansiColors.codes.bgBlack },
+            { text: '', error: ReferenceError, code: ansiStyles.codes.bgBlack },
             // Null code
             { text: 'test', code: null, error: ReferenceError },
             // Undefined code
@@ -121,8 +121,8 @@ describe(`It tests the "${ansiUtils.ModuleName}" module.`, function () {
             }).to.throw(test.error);
         });
 
-        const expected = util.format("\x1b[%s;%sm\x1b[%sm%s\x1b[0m", ansiColors.codes.bgBlack.value[0], 49, 7, "test")
-        const actual = ansiUtils.transparent("test", ansiColors.codes.bgBlack);
+        const expected = util.format("\x1b[%s;%sm\x1b[%sm%s\x1b[0m", ansiStyles.codes.bgBlack.value[0], 49, 7, "test")
+        const actual = ansiUtils.transparent("test", ansiStyles.codes.bgBlack);
 
         debug(actual, expected);
 
