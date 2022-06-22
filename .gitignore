@@ -17,6 +17,8 @@ tmp
 /build
 /lib
 /dist/**/*
+/types/**/*
+types
 
 # Coverage reports
 coverage

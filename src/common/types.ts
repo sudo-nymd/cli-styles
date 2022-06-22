@@ -144,7 +144,7 @@ export interface ICliColors {
     yellow: StyleFunction;
     yellowBright: StyleFunction;
 
-    get codes(): ICliColorCodes;
+    get codes(): IAnsiColorCodes;
 
     encode(code: ColorCode, text: string): string;
 
@@ -155,7 +155,7 @@ export interface ICliColors {
     [key: string]: any;
 }
 
-export interface ICliColorCodes {
+export interface IAnsiColorCodes {
     readonly bgBlack: ColorCode;
     readonly bgBlackBright: ColorCode;
     readonly bgBlue: ColorCode;
