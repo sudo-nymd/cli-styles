@@ -1,5 +1,5 @@
-export interface StyleFunction extends StylesType<StyleFunction> { (text: string): string; }
-interface StylesType<T> {
+export interface StyleFunction extends AnsiStylesType<StyleFunction> { (text: string): string; }
+interface AnsiStylesType<T> {
     // Style modifiers
     reset: T;
     bold: T;
@@ -65,13 +65,13 @@ export enum StyleCodeType {
     Transparent = 'transparent'
 }
 
-export type StyleCode = {
+export type AnsiStyleCode = {
     value: [number, number] | number[];
     type: StyleCodeType;
     name: string;
 }
 
-export enum ColorClass {
+export enum AnsiColorClass {
     Foreground = 1 << 0,
     Background = 1 << 1,
     Bright = 1 << 2,
@@ -79,16 +79,16 @@ export enum ColorClass {
     BackgroundBright = Background | Bright
 }
 
-export type ColorCode  = StyleCode & {
+export type AnsiColorCode  = AnsiStyleCode & {
     type: StyleCodeType.Color;
-    class: ColorClass
+    class: AnsiColorClass
 }
 
-export type ModifierCode = StyleCode & {
+export type AnsiModifierCode = AnsiStyleCode & {
     type: StyleCodeType.Modifier;
 }
 
-export type TransparentCode = StyleCode & {
+export type AnsiTransparentCode = AnsiStyleCode & {
     type: StyleCodeType.Transparent;
 }
 
@@ -98,9 +98,9 @@ export type StyleCodeDictionary<T> = {
 
 export type StyleCodeArray<T> = Array<T>;
 
-export type AnyStyleCode = ColorCode | ModifierCode | TransparentCode;
+export type AnyStyleCode = AnsiColorCode | AnsiModifierCode | AnsiTransparentCode;
 
-export interface ICliColors {
+export interface IAnsiColors {
     bgBlack: StyleFunction;
     bgBlackBright: StyleFunction;
     bgBlue: StyleFunction;
@@ -146,9 +146,9 @@ export interface ICliColors {
 
     get codes(): IAnsiColorCodes;
 
-    encode(code: ColorCode, text: string): string;
+    encode(code: AnsiColorCode, text: string): string;
 
-    bgToFG(code: ColorCode): ColorCode;
+    bgToFG(code: AnsiColorCode): AnsiColorCode;
 
     terminate: StyleFunction;
 
@@ -156,46 +156,46 @@ export interface ICliColors {
 }
 
 export interface IAnsiColorCodes {
-    readonly bgBlack: ColorCode;
-    readonly bgBlackBright: ColorCode;
-    readonly bgBlue: ColorCode;
-    readonly bgBlueBright: ColorCode;
-    readonly bgCyan: ColorCode;
-    readonly bgCyanBright: ColorCode;
-    readonly bgGreen: ColorCode;
-    readonly bgGreenBright: ColorCode;
-    readonly bgMagenta: ColorCode;
-    readonly bgMagentaBright: ColorCode;
-    readonly bgRed: ColorCode;
-    readonly bgRedBright: ColorCode;
-    readonly bgWhite: ColorCode;
-    readonly bgWhiteBright: ColorCode;
-    readonly bgYellow: ColorCode;
-    readonly bgYellowBright: ColorCode;
-    readonly black: ColorCode;
-    readonly blackBright: ColorCode;
-    readonly blue: ColorCode;
-    readonly blueBright: ColorCode;
-    readonly bold: ModifierCode;
-    readonly cyan: ColorCode;
-    readonly cyanBright: ColorCode;
-    readonly dim: ModifierCode;
-    readonly green: ColorCode;
-    readonly greenBright: ColorCode;
-    readonly hidden: ModifierCode;
-    readonly inverse: ModifierCode;
-    readonly italic: ModifierCode;
-    readonly magenta: ColorCode;
-    readonly magentaBright: ColorCode;
-    readonly red: ColorCode;
-    readonly redBright: ColorCode;
-    readonly reset: ModifierCode;
-    readonly strikethrough: ColorCode;
-    readonly underline: ColorCode;
-    readonly white: ColorCode;
-    readonly whiteBright: ColorCode;
-    readonly yellow: ColorCode;
-    readonly yellowBright: ColorCode;
+    readonly bgBlack: AnsiColorCode;
+    readonly bgBlackBright: AnsiColorCode;
+    readonly bgBlue: AnsiColorCode;
+    readonly bgBlueBright: AnsiColorCode;
+    readonly bgCyan: AnsiColorCode;
+    readonly bgCyanBright: AnsiColorCode;
+    readonly bgGreen: AnsiColorCode;
+    readonly bgGreenBright: AnsiColorCode;
+    readonly bgMagenta: AnsiColorCode;
+    readonly bgMagentaBright: AnsiColorCode;
+    readonly bgRed: AnsiColorCode;
+    readonly bgRedBright: AnsiColorCode;
+    readonly bgWhite: AnsiColorCode;
+    readonly bgWhiteBright: AnsiColorCode;
+    readonly bgYellow: AnsiColorCode;
+    readonly bgYellowBright: AnsiColorCode;
+    readonly black: AnsiColorCode;
+    readonly blackBright: AnsiColorCode;
+    readonly blue: AnsiColorCode;
+    readonly blueBright: AnsiColorCode;
+    readonly bold: AnsiModifierCode;
+    readonly cyan: AnsiColorCode;
+    readonly cyanBright: AnsiColorCode;
+    readonly dim: AnsiModifierCode;
+    readonly green: AnsiColorCode;
+    readonly greenBright: AnsiColorCode;
+    readonly hidden: AnsiModifierCode;
+    readonly inverse: AnsiModifierCode;
+    readonly italic: AnsiModifierCode;
+    readonly magenta: AnsiColorCode;
+    readonly magentaBright: AnsiColorCode;
+    readonly red: AnsiColorCode;
+    readonly redBright: AnsiColorCode;
+    readonly reset: AnsiModifierCode;
+    readonly strikethrough: AnsiColorCode;
+    readonly underline: AnsiColorCode;
+    readonly white: AnsiColorCode;
+    readonly whiteBright: AnsiColorCode;
+    readonly yellow: AnsiColorCode;
+    readonly yellowBright: AnsiColorCode;
 
     [key: string]: AnyStyleCode;
 }

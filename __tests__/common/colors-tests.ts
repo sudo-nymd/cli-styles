@@ -1,5 +1,5 @@
 import { AnsiStyleCodes, ModuleName } from '../../src/common/colors';
-import { ColorClass, StyleCodeType } from '../../src/common/types';
+import { AnsiColorClass, StyleCodeType } from '../../src/common/types';
 
 describe(`It tests the "${ModuleName}" module.`, function() {
 

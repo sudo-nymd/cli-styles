@@ -7,15 +7,15 @@ import {
     StyleCodeType,
     StyleFunction
     } from './cli-colors';
-import { ColorCode, ModifierCode, StyleCodeArray } from './common/types';
+import { AnsiColorCode, AnsiModifierCode, StyleCodeArray } from './common/types';
 
 export default cliColors;
 
 export { 
     AnsiStyleCodes, 
     ColorClass, 
-    ColorCode, 
-    ModifierCode, 
+    AnsiColorCode as ColorCode, 
+    AnsiModifierCode as ModifierCode, 
     StyleCode, 
     StyleCodeArray, 
     StyleCodeType, 

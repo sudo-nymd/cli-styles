@@ -1,10 +1,10 @@
 import * as util from 'util'
 import { AnsiStyleCodes } from "./common/colors";
-import { AnyStyleCode, ICliColors, StyleCode, StyleCodeType, ColorClass, StyleCodeDictionary, StyleFunction, ColorCode } from "./common/types";
+import { AnyStyleCode, IAnsiColors, AnsiStyleCode, StyleCodeType, AnsiColorClass, StyleCodeDictionary, StyleFunction, AnsiColorCode } from "./common/types";
 
 class CliColors {
 
-    private _stack: StyleCode[];
+    private _stack: AnsiStyleCode[];
     private _codes: StyleCodeDictionary<AnyStyleCode>;    
 
     constructor() {
@@ -64,7 +64,7 @@ class CliColors {
         return util.format("%s\x1b[0m", text);
     }
 
-    public bgToFG(code: ColorCode): ColorCode {
+    public bgToFG(code: AnsiColorCode): AnsiColorCode {
 
         if (code === undefined || code === null) {
             throw new ReferenceError('Code cannot be undefined or null!');
@@ -76,8 +76,8 @@ class CliColors {
             throw new TypeError(`Code of type "${type}" is not permitted for this operation! Type must be "${StyleCodeType.Color}".`)
         }
 
-        if (code.class !== ColorClass.Background && code.class !== ColorClass.BackgroundBright) {
-            throw new TypeError(`Code of class "${code.class}" is not permitted for this operation! Class must be either "${ColorClass.Background}" or "${ColorClass.BackgroundBright}".`);
+        if (code.class !== AnsiColorClass.Background && code.class !== AnsiColorClass.BackgroundBright) {
+            throw new TypeError(`Code of class "${code.class}" is not permitted for this operation! Class must be either "${AnsiColorClass.Background}" or "${AnsiColorClass.BackgroundBright}".`);
         }
 
         let newName = name.replace(/^(bg)/, '');
@@ -87,14 +87,14 @@ class CliColors {
             name: newName,
             value: [value[0] - 10, value[1] - 10],
             type: StyleCodeType.Color,
-            class: (code.class & ColorClass.Bright) ? ColorClass.ForegroundBright : ColorClass.Foreground
+            class: (code.class & AnsiColorClass.Bright) ? AnsiColorClass.ForegroundBright : AnsiColorClass.Foreground
         }
     }
 }
 
-const createInstance = (): ICliColors => {
+const createInstance = (): IAnsiColors => {
     const cliColors: unknown = new CliColors();
-    return cliColors as ICliColors;
+    return cliColors as IAnsiColors;
 }
 
 const cliColors = createInstance();
@@ -106,4 +106,4 @@ export default cliColors;
  */
 export const ModuleName = 'cli-colors'
 
-export { ColorClass, StyleCodeType, StyleCode, AnyStyleCode, StyleFunction }
+export { AnsiColorClass as ColorClass, StyleCodeType, AnsiStyleCode as StyleCode, AnyStyleCode, StyleFunction }

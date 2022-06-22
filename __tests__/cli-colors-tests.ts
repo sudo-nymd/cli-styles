@@ -1,7 +1,7 @@
 import cliColors from "../src/cli-colors";
 import { ModuleName } from '../src/cli-colors';
 import { AnsiStyleCodes } from '../src/common/colors';
-import { AnyStyleCode, ColorClass, ColorCode, ModifierCode, StyleCode, StyleCodeType, StyleFunction } from "../src/common/types";
+import { AnyStyleCode, AnsiColorClass, AnsiColorCode, AnsiModifierCode, AnsiStyleCode, StyleCodeType, StyleFunction } from "../src/common/types";
 import * as logger from './lib/logger';
 import * as util from 'util';
 import { expect } from 'chai';
@@ -13,7 +13,7 @@ const debug = (msg: object | string, src?: string) => logger.debug(LOGENTRY, msg
 const error = (msg: string | object, src?: string) => logger.error(LOGENTRY, msg, src);
 const warn = (msg: string | object, src?: string) => logger.warn(LOGENTRY, msg, src);
 
-const encode = (code: StyleCode, text: string, debug = false) => {
+const encode = (code: AnsiStyleCode, text: string, debug = false) => {
     if(debug) {
         return `x1b[${code.value[0]}m${text}x1b[${code.value[1]}m`;
     }
@@ -22,19 +22,19 @@ const encode = (code: StyleCode, text: string, debug = false) => {
 
 describe(`It tests the "${ModuleName}" module.`, function () {
 
-    const BACKGROUNDs: ColorCode[] = [];
-    const FOREGROUNDs: ColorCode[] = [];
+    const BACKGROUNDs: AnsiColorCode[] = [];
+    const FOREGROUNDs: AnsiColorCode[] = [];
     const BRIGHTs = [];
-    const MODIFIERs: ModifierCode[] = [];
+    const MODIFIERs: AnsiModifierCode[] = [];
 
     AnsiStyleCodes.forEach(function(code) {
         if (code.type === StyleCodeType.Color) {
             switch(code.class) {
-                case ColorClass.Foreground:
+                case AnsiColorClass.Foreground:
                     FOREGROUNDs.push(code);
                     break;
 
-                case ColorClass.Background:
+                case AnsiColorClass.Background:
                     BACKGROUNDs.push(code);
                     break;
             }
