@@ -1,5 +1,5 @@
-import ansiColors from "../src/ansi-colors";
-import { ModuleName } from '../src/ansi-colors';
+import ansiStyles from "../src/ansi-styles";
+import { ModuleName } from '../src/ansi-styles';
 import { AnsiStyleCodes } from '../src/common/colors';
 import { AnyStyleCode, AnsiColorCodeTypes, AnsiColorCode, AnsiModifierCode, AnsiStyleCode, AnsiStyleCodeTypes, StyleFunction } from "../src/common/types";
 import * as logger from './lib/logger';
@@ -59,7 +59,7 @@ describe(`It tests the "${ModuleName}" module.`, function () {
             const text = `${fg.name}=>${bg.name}=>${m.name}`;
 
             const expected = encode(fg, encode(bg, encode(m, text))) + "\x1b[0m";
-            const actual = ansiColors[fg.name][bg.name][m.name](text);
+            const actual = ansiStyles[fg.name][bg.name][m.name](text);
 
             debug(actual, '+' + text.padStart(30));
             debug(expected, '+' + text.padStart(30))
@@ -73,12 +73,12 @@ describe(`It tests the "${ModuleName}" module.`, function () {
 
         const keys = Object.keys(AnsiStyleCodes);
         const expectedLength = keys.length;
-        const actualLength = Object.keys(ansiColors.codes).length;
+        const actualLength = Object.keys(ansiStyles.codes).length;
         expect(actualLength, 'Invalid count of cliColors.codes properties.').to.equal(expectedLength);
 
         AnsiStyleCodes.forEach(function (code) {
-            const func = ansiColors[code.name] as StyleFunction;
-            const c = ansiColors.codes[code.name] as AnyStyleCode;
+            const func = ansiStyles[code.name] as StyleFunction;
+            const c = ansiStyles.codes[code.name] as AnyStyleCode;
             const expected = util.format("\x1b[%sm%s\x1b[%sm\x1b[0m", code.value[0], code.name, code.value[1]);
             const actual = func(code.name);
             debug(actual, '+' + code.name.padStart(20));
@@ -97,7 +97,7 @@ describe(`It tests the "${ModuleName}" module.`, function () {
             //if(count % 2 === 0) {
                 const n_1 = AnsiStyleCodes[count].name;
                 //const n_2 = AnsiStyleCodes[count + 1].name;
-                const f_1 = ansiColors[n_1] as StyleFunction;
+                const f_1 = ansiStyles[n_1] as StyleFunction;
                 //const f_2 = cliColors[n_2] as StyleFunction;
                 const v_1 = f_1(n_1);
                 //const v_2 = f_2(n_2);

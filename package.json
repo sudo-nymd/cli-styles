@@ -45,10 +45,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sudo-nymd/cli-colors.git"
+    "url": "git+https://github.com/sudo-nymd/cli-styles.git"
   },
   "bugs": {
-    "url": "https://github.com/sudo-nymd/cli-colors/issues"
+    "url": "https://github.com/sudo-nymd/cli-styles/issues"
   },
-  "homepage": "https://github.com/sudo-nymd/cli-colors#readme"
+  "homepage": "https://github.com/sudo-nymd/cli-styles#readme"
 }

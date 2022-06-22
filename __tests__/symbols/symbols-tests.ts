@@ -3,7 +3,7 @@ import * as logger from '../lib/logger';
 import * as util from 'util';
 import { expect } from 'chai';
 import { powerline, ModuleName } from '../../src/symbols';
-import ansiColors from '../../src/ansi-colors';
+import ansiStyles from '../../src/ansi-styles';
 
 // "Stateless" logging functions (avoid clashes with Mocha's hijackng of "this")
 const LOGENTRY = logger.create(ModuleName);

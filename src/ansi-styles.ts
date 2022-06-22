@@ -60,6 +60,6 @@ export default ansiColors;
 /**
  * Export module name for test runners.
  */
-export const ModuleName = 'cli-colors'
+export const ModuleName = 'cli-styles'
 
 export { AnsiColorCodeTypes, AnsiStyleCodeTypes, AnsiStyleCode, AnyStyleCode, StyleFunction }

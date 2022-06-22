@@ -11,7 +11,7 @@ There are already plenty of ```great``` CLI color libraries out there:
 * [chalk]
 * [colors]
 * [ansi-colors]
-* [cli-colors]
+* [cli-styles]
 
 ```@sudo-nymd/cli-styles``` is purely a "vanity" project to sharpen my "vanilla" JavaScript/TypeScript skills. Feel free to use it if you like. ```@sudo-nymd/cli-styles``` provides a familiar API, plus a few utilities that I needed for a project.
 
@@ -60,7 +60,7 @@ console.log(cliColors.bgYellow.magenta.bold('This text will be BOLD and BLUE wit
 | gray    |                   |               |                          |
 | grey    |                   |               |                          |
 
-<img src="https://github.com/sudo-nymd/cli-colors/blob/master/screenshot1.png?raw=true" width="200"/>
+<img src="https://github.com/sudo-nymd/cli-styles/blob/master/screenshot1.png?raw=true" width="200"/>
 
 ## Style Modifiers
 
@@ -75,5 +75,5 @@ console.log(cliColors.bgYellow.magenta.bold('This text will be BOLD and BLUE wit
 
 [ansi-colors]: https://www.npmjs.com/package/ansi-colors
 [chalk]: https://www.npmjs.com/package/chalk
-[cli-colors]: https://www.npmjs.com/package/cli-colors
+[cli-styles]: https://www.npmjs.com/package/cli-styles
 [colors]: https://www.npmjs.com/package/colors

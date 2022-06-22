@@ -4,7 +4,7 @@ import * as util from 'util';
 import { expect } from 'chai';
 import * as ansiUtils from '../../src/common/ansi-utils';
 import { AnsiStyleCode, AnsiStyleCodeTypes, AnsiColorCodeTypes } from '../../src/common/types';
-import ansiColors from '../../src/ansi-colors';
+import ansiColors from '../../src/ansi-styles';
 
 // "Stateless" logging functions (avoid clashes with Mocha's hijackng of "this")
 const LOGENTRY = logger.create(ansiUtils.ModuleName);
