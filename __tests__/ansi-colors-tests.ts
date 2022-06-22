@@ -1,7 +1,7 @@
 import ansiColors from "../src/ansi-colors";
 import { ModuleName } from '../src/ansi-colors';
 import { AnsiStyleCodes } from '../src/common/colors';
-import { AnyStyleCode, AnsiColorClass, AnsiColorCode, AnsiModifierCode, AnsiStyleCode, AnsiStyleCodeType, StyleFunction } from "../src/common/types";
+import { AnyStyleCode, AnsiColorTypes, AnsiColorCode, AnsiModifierCode, AnsiStyleCode, AnsiStyleCodeType, StyleFunction } from "../src/common/types";
 import * as logger from './lib/logger';
 import * as util from 'util';
 import { expect } from 'chai';
@@ -29,12 +29,12 @@ describe(`It tests the "${ModuleName}" module.`, function () {
 
     AnsiStyleCodes.forEach(function(code) {
         if (code.type === AnsiStyleCodeType.Color) {
-            switch(code.class) {
-                case AnsiColorClass.Foreground:
+            switch(code.colorType) {
+                case AnsiColorTypes.Foreground:
                     FOREGROUNDs.push(code);
                     break;
 
-                case AnsiColorClass.Background:
+                case AnsiColorTypes.Background:
                     BACKGROUNDs.push(code);
                     break;
             }
