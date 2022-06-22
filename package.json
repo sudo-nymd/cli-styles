@@ -39,9 +39,7 @@
     "webpack-cli": "^4.9.2",
     "webpack-node-externals": "^3.0.0"
   },
-  "dependencies": {
-    "dotenv": "^16.0.1"
-  },
+  "dependencies": {},
   "directories": {
     "lib": "lib"
   },
