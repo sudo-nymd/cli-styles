@@ -18,8 +18,17 @@ There are already plenty of ```great``` CLI style & color libraries out there:
 
 | Foreground Colors  | Background Colors |
 | ------- | ----------------- | 
-| <img src="https://github.com/sudo-nymd/cli-styles/raw/master/images/foreground-colors.png" width="300"/>   | <img src="https://github.com/sudo-nymd/cli-styles/raw/master/images/background-colors.png" width="300"/>           | 
+|    |            | 
 
+<table>
+<tr>
+    <td>
+        <img src="https://github.com/sudo-nymd/cli-styles/raw/master/images/foreground-colors.png" width="300"/>
+    </td>
+    <td>
+        <img src="https://github.com/sudo-nymd/cli-styles/raw/master/images/background-colors.png" width="300"/>
+    </td>
+</tr>
 
 
 
