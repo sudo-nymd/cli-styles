@@ -1,6 +1,6 @@
 {
   "name": "@sudo-nymd/cli-styles",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "A simple library for command line interface (CLI) styles.",
   "main": "lib/index.js",
   "types": "./types",
