@@ -13,21 +13,21 @@ There are already plenty of ```great``` CLI color libraries out there:
 * [ansi-colors]
 * [cli-colors]
 
-```@sudo-nymd/cli-colors``` is purely a "vanity" project to sharpen my "vanilla" JavaScript/TypeScript skills. Feel free to use it if you like. ```@sudo-nymd/cli-colors``` provides a familiar API, plus a few utilities that I needed for a project.
+```@sudo-nymd/cli-styles``` is purely a "vanity" project to sharpen my "vanilla" JavaScript/TypeScript skills. Feel free to use it if you like. ```@sudo-nymd/cli-styles``` provides a familiar API, plus a few utilities that I needed for a project.
 
 # Usage
 
 ## Install
 
-Install ```@sudo-nymd/cli-colors``` using NPM:
+Install ```@sudo-nymd/cli-styles``` using NPM:
 
 ``` bash
-npm install @sudo-nymd/cli-colors
+npm install @sudo-nymd/cli-styles
 ```
 ## The Basics
 
 ``` javascript
-const cliColors = require('@sudo-nymd/cli-colors');
+const cliColors = require('@sudo-nymd/cli-styles');
 
 console.log(cliColors.red('This text will be RED'));
 console.log(cliColors.bgYellow('This text will have a YELLOW background'));
