@@ -10,7 +10,7 @@ import {
     StyleFunction
     } from './ansi-styles';
 
-import { AnsiColorCode, AnsiModifierCode, StyleCodeArray } from './common/types';
+import { AnsiColorCode, AnsiModifierCode, StyleCodeArray, IAnsiStyles, IAnsiStyleCodes } from './common/types';
 
 export { 
     AnsiColorCode, 
@@ -23,5 +23,7 @@ export {
     ansiUtils,
     StyleCodeArray, 
     StyleFunction, 
+    IAnsiStyleCodes,
+    IAnsiStyles
     //symbols
 }
