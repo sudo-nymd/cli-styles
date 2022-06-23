@@ -2,7 +2,7 @@
 import * as logger from '../lib/logger';
 import * as util from 'util';
 import { expect } from 'chai';
-import { powerline, ModuleName } from '../../src/symbols';
+import { arrow, ArrowDirections, ModuleName } from '../../src/effects/arrows';
 import ansiStyles from '../../src/ansi-styles';
 
 // "Stateless" logging functions (avoid clashes with Mocha's hijackng of "this")
@@ -12,7 +12,7 @@ const debug = (msg: object | string, src?: string) => logger.debug(LOGENTRY, msg
 const error = (msg: string | object, src?: string) => logger.error(LOGENTRY, msg, src);
 const warn = (msg: string | object, src?: string) => logger.warn(LOGENTRY, msg, src);
 
-describe.skip(`It tests the "${ModuleName}" module.`, function () {
+describe(`It tests the "${ModuleName}" module.`, function () {
 
     afterEach(() => {
         // Flush logging buffer after every test!
@@ -20,12 +20,15 @@ describe.skip(`It tests the "${ModuleName}" module.`, function () {
     });
 
 
-    it(`Prints the arrows enum.`, function (done) {
+    it.only(`Prints a couple of arrows.`, function (done) {
 
-        Object.keys(powerline.arrows).forEach((key) => {
-            // @ts-ignore
-            console.log(`${key} ${powerline.arrows[key]}`)
-        })
+        const rightArrow = arrow({ bgColor: ansiStyles.codes.bgBlueBright });
+        const leftArrow = arrow({ direction: ArrowDirections.Left, bgColor: ansiStyles.codes.bgMagentaBright });
+
+        log(rightArrow("This is a right-facing arrow."));
+        log(leftArrow("This is a left-facing arrow."));
+        log(rightArrow("This is a right-facing arrow.") + rightArrow("Another arrow."));
+        log(leftArrow("This is a left-facing arrow.") + leftArrow("Another arrow."));
         
         done();
     });
