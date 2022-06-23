@@ -1,7 +1,0 @@
-{
-    "compilerOptions": {
-        "module": "CommonJS",
-        "sourceMap": true,
-        "noImplicitThis": true
-    }
-}

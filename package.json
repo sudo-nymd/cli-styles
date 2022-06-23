@@ -1,12 +1,10 @@
 {
   "name": "@sudo-nymd/cli-styles",
-  "version": "0.3.3",
+  "version": "0.3.beta",
   "description": "A simple library for command line interface (CLI) styles.",
-  "main": "lib/index.js",
-  "types": "./types",
+  "main": "dist/index.js",
   "files": [
-    "lib",
-    "types"
+    "dist"
   ],
   "scripts": {
     "clean": "gulp clean",
@@ -20,27 +18,7 @@
   "author": "TylerDurham <sudo-nymd@outlook.com> (https://github.com/TylerDurham)",
   "license": "MIT",
   "devDependencies": {
-    "@istanbuljs/nyc-config-typescript": "^1.0.2",
-    "@types/chai": "^4.3.1",
-    "@types/mocha": "^9.1.1",
-    "@types/node": "^17.0.33",
-    "ansi-colors": "^4.1.2",
-    "chai": "^4.3.6",
-    "cross-spawn": "^7.0.3",
-    "del": "^6.0.0",
-    "gulp": "^4.0.2",
-    "gulp-rename": "^2.0.0",
-    "mocha": "^10.0.0",
-    "nyc": "^15.1.0",
-    "source-map-support": "^0.5.21",
-    "ts-node": "^10.7.0",
-    "typescript": "^4.7.4",
-    "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2",
-    "webpack-node-externals": "^3.0.0"
-  },
-  "directories": {
-    "lib": "lib"
+    
   },
   "repository": {
     "type": "git",

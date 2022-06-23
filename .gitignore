@@ -19,6 +19,8 @@ tmp
 /dist/**/*
 /types/**/*
 types
+old
+__tests_old__
 
 # Coverage reports
 coverage
