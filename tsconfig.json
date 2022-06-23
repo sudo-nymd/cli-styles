@@ -10,7 +10,7 @@
     "strict": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "outDir": "lib"
+    "outDir": "lib",
   }, "include": [
     "./src/**/*.ts"
   ]

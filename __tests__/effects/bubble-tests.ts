@@ -2,8 +2,7 @@
 import * as logger from '../lib/logger';
 import * as util from 'util';
 import { expect } from 'chai';
-import { arrow, ArrowDirections, ModuleName } from '../../src/effects/arrow';
-import { symbols } from '../../src/effects/symbols'
+import { bubble, ModuleName } from '../../src/effects/bubble';
 import ansiStyles from '../../src/ansi-styles';
 
 // "Stateless" logging functions (avoid clashes with Mocha's hijackng of "this")
@@ -21,15 +20,15 @@ describe(`It tests the "${ModuleName}" module.`, function () {
     });
 
 
-    it(`Prints a couple of arrows.`, function (done) {
+    it(`Prints a couple of bubbles.`, function (done) {
 
-        const rightArrow = arrow({ bgColor: ansiStyles.codes.bgBlueBright });
-        const leftArrow = arrow({ direction: ArrowDirections.Left, bgColor: ansiStyles.codes.bgMagentaBright });
+        const bubble1 = bubble({ bgColor: ansiStyles.codes.bgBlueBright });
+        const bubble2 = bubble({ bgColor: ansiStyles.codes.bgMagentaBright });
 
-        log(rightArrow("This is a right-facing arrow."));
-        log(leftArrow("This is a left-facing arrow."));
-        log(rightArrow("This is a right-facing arrow.") + rightArrow("Another arrow."));
-        log(leftArrow("This is a left-facing arrow.") + leftArrow("Another arrow."));
+        log(bubble1("This is a right-facing bubble."));
+        log(bubble2("This is a left-facing bubble."));
+        log(bubble1("This is a right-facing bubble.") + bubble2("Another bubble."));
+        log(bubble2("This is a left-facing bubble.") + bubble1("Another bubble."));
         
         done();
     });

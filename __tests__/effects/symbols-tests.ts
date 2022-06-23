@@ -2,8 +2,7 @@
 import * as logger from '../lib/logger';
 import * as util from 'util';
 import { expect } from 'chai';
-import { arrow, ArrowDirections, ModuleName } from '../../src/effects/arrow';
-import { symbols } from '../../src/effects/symbols'
+import { symbols, ModuleName } from '../../src/effects/symbols';
 import ansiStyles from '../../src/ansi-styles';
 
 // "Stateless" logging functions (avoid clashes with Mocha's hijackng of "this")
@@ -21,16 +20,25 @@ describe(`It tests the "${ModuleName}" module.`, function () {
     });
 
 
-    it(`Prints a couple of arrows.`, function (done) {
+    it.only(`Prints bracket symbols`, function (done) {
 
-        const rightArrow = arrow({ bgColor: ansiStyles.codes.bgBlueBright });
-        const leftArrow = arrow({ direction: ArrowDirections.Left, bgColor: ansiStyles.codes.bgMagentaBright });
+        Object.keys(symbols.brackets).forEach((key) => {
+            Object.keys(symbols.brackets[key]).forEach((bracket) => {
+                log(`${key} ${bracket} ${symbols.brackets[key][bracket]}`, "brackets");
+            });            
+        });
 
-        log(rightArrow("This is a right-facing arrow."));
-        log(leftArrow("This is a left-facing arrow."));
-        log(rightArrow("This is a right-facing arrow.") + rightArrow("Another arrow."));
-        log(leftArrow("This is a left-facing arrow.") + leftArrow("Another arrow."));
-        
+        done();
+    });
+
+    it.only(`Prints quotes symbols`, function (done) {
+
+        Object.keys(symbols.quotes).forEach((key) => {
+            Object.keys(symbols.quotes[key]).forEach((quote) => {
+                log(`${key} ${quote} ${symbols.quotes[key][quote]}`, "quotes");
+            });
+        });
+
         done();
     });
 
