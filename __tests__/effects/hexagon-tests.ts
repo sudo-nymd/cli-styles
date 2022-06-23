@@ -2,7 +2,7 @@
 import * as logger from '../lib/logger';
 import * as util from 'util';
 import { expect } from 'chai';
-import { symbols, ModuleName } from '../../src/effects/symbols';
+import { hexagon, ModuleName } from '../../src/effects/hexagon';
 import ansiStyles from '../../src/ansi-styles';
 
 // "Stateless" logging functions (avoid clashes with Mocha's hijackng of "this")
@@ -20,25 +20,16 @@ describe(`It tests the "${ModuleName}" module.`, function () {
     });
 
 
-    it(`Prints bracket symbols`, function (done) {
+    it(`Prints a couple of hexagons.`, function (done) {
 
-        Object.keys(symbols.brackets).forEach((key) => {
-            Object.keys(symbols.brackets[key]).forEach((bracket) => {
-                log(`${key} ${bracket} ${symbols.brackets[key][bracket]}`, "brackets");
-            });            
-        });
+        const hexagon1 = hexagon({ bgColor: ansiStyles.codes.bgBlueBright });
+        const hexagon2 = hexagon({ bgColor: ansiStyles.codes.bgMagentaBright });
 
-        done();
-    });
-
-    it(`Prints quotes symbols`, function (done) {
-
-        Object.keys(symbols.quotes).forEach((key) => {
-            Object.keys(symbols.quotes[key]).forEach((quote) => {
-                log(`${key} ${quote} ${symbols.quotes[key][quote]}`, "quotes");
-            });
-        });
-
+        log(hexagon1("This is a right-facing hexagon."));
+        log(hexagon2("This is a left-facing hexagon."));
+        log(hexagon1("This is a right-facing hexagon.") + hexagon2("Another hexagon."));
+        log(hexagon2("This is a left-facing hexagon.") + hexagon1("Another hexagon."));
+        
         done();
     });
 
