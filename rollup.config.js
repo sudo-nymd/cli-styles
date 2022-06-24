@@ -11,9 +11,9 @@ const config = [
             format: 'cjs',
             sourcemap: true,
         },
-        external: ['axios', 'os', 'url'],
         plugins: [resolve(), typescript()]
-    }, {
+    },
+    {
         input: 'build/index.d.ts',
         output: {
             file: './lib/index.d.ts',
