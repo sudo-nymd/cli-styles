@@ -1,7 +1,5 @@
 export * as effects from './effects';
 
-//export { bubble, BubbleOptions } from './effects/bubble';
-//export { hexagon, HexagonOptions } from './effects/hexagon';
 export { 
     AnsiStyleCodeTypes, 
     AnsiColorCodeTypes, 
