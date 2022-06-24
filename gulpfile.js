@@ -41,7 +41,8 @@ const TASK_CONFIG = {
         args: ['--config', './__tests__/.mocharc.json']
     },
     BUNDLE: {
-        command: './node_modules/.bin/webpack-cli'
+        command: './node_modules/.bin/rollup',
+        args: ['-c']
     },
     COVERAGE: {
         command: './node_modules/.bin/nyc',
@@ -62,8 +63,8 @@ const TASK_CONFIG = {
  * @param {*} done A callback that let's Gulp know we are finished.
  */
 const bundleTask = (done) => {
-    const { SPAWN: OPTIONS, BUNDLE: { command } } = TASK_CONFIG
-    const result = spawn(command, OPTIONS);
+    const { SPAWN: OPTIONS, BUNDLE: { command, args } } = TASK_CONFIG
+    const result = spawn(command, args, OPTIONS);
     done();
 }
 
@@ -118,10 +119,13 @@ exports.compile = compileTask;
  */
 const testTask = (done) => {
     const { SPAWN: OPTIONS, TEST: { command, args } } = TASK_CONFIG;
-    //process.chdir("__tests__");
-    process.env.TS_NODE_COMPILER_OPTIONS = '{"module":"commonjs"}';
+    // IMPORTANT: Override TS module for the purpose of unit test
+    const TS_NODE_COMPILER_OPTIONS = JSON.stringify(
+        { "module": "commonjs" }
+    )
+    process.env.TS_NODE_COMPILER_OPTIONS = TS_NODE_COMPILER_OPTIONS;
     const result = spawn(command, args, OPTIONS);
-    console.log(result)
+    //console.log(result)
     done();
 }
 
@@ -132,7 +136,7 @@ exports.test = testTask;
  * TASK BUILD
  * Builds the project.
  */
-const buildTask = series([cleanTask, compileTask]);
+const buildTask = series([cleanTask, compileTask, bundleTask]);
 
 buildTask.description = `Cleans and compiles the project.`
 exports.build = buildTask;
