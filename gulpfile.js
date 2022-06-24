@@ -37,7 +37,7 @@ const TASK_CONFIG = {
         ]
     },
     TEST: {
-        command: './node_modules/.bin/mocha',
+        command: `./node_modules/.bin/mocha`,
         args: ['--config', './__tests__/.mocharc.json']
     },
     BUNDLE: {
@@ -118,7 +118,10 @@ exports.compile = compileTask;
  */
 const testTask = (done) => {
     const { SPAWN: OPTIONS, TEST: { command, args } } = TASK_CONFIG;
+    //process.chdir("__tests__");
+    process.env.TS_NODE_COMPILER_OPTIONS = '{"module":"commonjs"}';
     const result = spawn(command, args, OPTIONS);
+    console.log(result)
     done();
 }
 
