@@ -2,7 +2,6 @@ import { utils, AnsiColorCode, effects } from "../index";
 import { ansiStyles } from '../ansi-styles'
 import * as util from "util";
 
-
 export type BubbleOptions = {
     fgColor?: AnsiColorCode;
     bgColor?: AnsiColorCode;
