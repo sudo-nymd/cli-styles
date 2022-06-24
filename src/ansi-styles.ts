@@ -10,6 +10,7 @@ import {
     } from './index';
 
 import { ANSI_STYLE_CODES  } from './common/colors';
+import { DEBUG } from './common/config';
 
 class AnsiStyles {
 
@@ -58,7 +59,7 @@ class AnsiStyles {
 
 export const createInstance = (): IAnsiStyles => {
     const ansiStyles: unknown = new AnsiStyles();
-    console.log('ansiStyles: ' + ansiStyles);
+    if (DEBUG) console.log('Creating a new instance of ansiStyles: \n\n' + JSON.stringify(ansiStyles, null, 4));
     return ansiStyles as IAnsiStyles;
 }
 
