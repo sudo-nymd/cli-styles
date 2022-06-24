@@ -1,10 +1,12 @@
-
 import * as logger from '../lib/logger';
 import * as util from 'util';
 import { expect } from 'chai';
-import { arrow, ArrowDirections, ModuleName } from '../../src/effects/arrow';
-import { symbols } from '../../src/effects/symbols'
-import ansiStyles from '../../src/ansi-styles';
+import {  } from '../../src/effects/arrow';
+import {  } from '../../src/effects/symbols'
+import { ansiStyles, effects } from '../../src/index';
+
+const ModuleName = "effects/arrow";
+const { arrow, ArrowDirections} = effects;
 
 // "Stateless" logging functions (avoid clashes with Mocha's hijackng of "this")
 const LOGENTRY = logger.create(ModuleName);

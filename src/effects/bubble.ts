@@ -1,9 +1,6 @@
-import { ansiStyles, ansiUtils } from "../index";
-import { AnsiColorCode } from "../common/types";
-import { symbols } from "./symbols";
+import { utils, AnsiColorCode, effects } from "../index";
+import { ansiStyles } from '../ansi-styles'
 import * as util from "util";
-
-const { encode, convertToForeground } = ansiUtils;
 
 export type BubbleOptions = {
     fgColor?: AnsiColorCode;
@@ -19,15 +16,15 @@ export const bubble = (options?: BubbleOptions) => {
     
     const opts = Object.assign(DEFAULT, options);
     const { bgColor, fgColor } = opts;
-    const afg = convertToForeground(bgColor);
-    const bubble = symbols.bubbles;
+    const afg = utils.convertToForeground(bgColor);
+    const bubble = effects.symbols.bubbles;
 
     return (text: string) => {
         return util.format(
             "%s%s%s", 
-            encode(bubble.left, afg), 
-            encode(encode(text, fgColor), bgColor),
-            encode(bubble.right, afg)
+            utils.encode(bubble.left, afg), 
+            utils.encode(utils.encode(text, fgColor), bgColor),
+            utils.encode(bubble.right, afg)
         );
     }
 }

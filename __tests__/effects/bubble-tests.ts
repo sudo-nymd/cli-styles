@@ -1,9 +1,10 @@
-
 import * as logger from '../lib/logger';
 import * as util from 'util';
 import { expect } from 'chai';
-import { bubble, ModuleName } from '../../src/effects/bubble';
-import ansiStyles from '../../src/ansi-styles';
+import { ansiStyles, effects } from '../../src/index';
+
+const ModuleName = 'effects/bubbles';
+const { bubble } = effects;
 
 // "Stateless" logging functions (avoid clashes with Mocha's hijackng of "this")
 const LOGENTRY = logger.create(ModuleName);

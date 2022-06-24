@@ -1,22 +1,30 @@
-import * as util from 'util';
-import { AnsiStyleCodes } from "./common/colors";
-import { AnyStyleCode, IAnsiStyles, AnsiStyleCode, AnsiStyleCodeTypes, AnsiColorCodeTypes, StyleCodeDictionary, StyleFunction, AnsiColorCode } from "./common/types";
-import * as ansiUtils from './common/ansi-utils';
+import {
+    AnsiColorCodeTypes,
+    AnsiStyleCode,
+    AnsiStyleCodeTypes,
+    utils,
+    AnyStyleCode,
+    IAnsiStyles,
+    StyleCodeDictionary,
+    StyleFunction
+    } from './index';
+
+import { ANSI_STYLE_CODES  } from './common/colors';
 
 class AnsiStyles {
 
     private _stack: AnsiStyleCode[];
-    private _codes: StyleCodeDictionary<AnyStyleCode>;    
+    private _codes: StyleCodeDictionary<AnyStyleCode>;
 
     constructor() {
         this._stack = [];
         this._codes = {};
 
-        const self = this;     
+        const self = this;
 
         // Loop through our color/styles map, and build dynamic 
         // chained methods that allow style formatting.
-        AnsiStyleCodes.forEach(function (code) {
+        ANSI_STYLE_CODES.forEach(function (code) {
 
             const colorObj = {
                 [code.name]: {
@@ -24,10 +32,10 @@ class AnsiStyles {
                         self._stack.push(code)
                         const fmt = (text: string) => {
                             for (var code of self._stack.reverse()) {
-                                text = ansiUtils.encode(text, code as AnyStyleCode); 
+                                text = utils.encode(text, code as AnyStyleCode);
                             }
                             self._stack = [];
-                            return ansiUtils.terminate(text);
+                            return utils.terminate(text);
                         }
 
                         fmt.__proto__ = self;
@@ -37,7 +45,7 @@ class AnsiStyles {
             }
 
             self._codes[code.name] = code;
-            
+
             Object.defineProperties(AnsiStyles.prototype, colorObj);
         });
     }
@@ -48,18 +56,18 @@ class AnsiStyles {
 
 }
 
-const createInstance = (): IAnsiStyles => {
+export const createInstance = (): IAnsiStyles => {
     const ansiStyles: unknown = new AnsiStyles();
+    console.log('ansiStyles: ' + ansiStyles);
     return ansiStyles as IAnsiStyles;
 }
 
 const ansiStyles = createInstance();
-
-export default ansiStyles;
+//export {ansiStyles}
 
 /**
  * Export module name for test runners.
  */
 export const ModuleName = 'ansi-styles'
 
-export { AnsiColorCodeTypes, AnsiStyleCodeTypes, AnsiStyleCode, AnyStyleCode, StyleFunction }
+export { ansiStyles, AnsiColorCodeTypes, AnsiStyleCodeTypes, AnsiStyleCode, AnyStyleCode, StyleFunction }

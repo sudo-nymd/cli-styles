@@ -1,9 +1,6 @@
-import { ansiStyles, ansiUtils } from "../index";
-import { AnsiColorCode } from "../common/types";
-import { symbols } from "./symbols";
+import { utils, AnsiColorCode, effects } from "../index";
+import { ansiStyles } from '../ansi-styles'
 import * as util from "util";
-
-const { encode, convertToForeground } = ansiUtils;
 
 export type HexagonOptions = {
     fgColor?: AnsiColorCode;
@@ -19,15 +16,15 @@ export const hexagon = (options?: HexagonOptions) => {
 
     const opts = Object.assign(DEFAULT, options);
     const { bgColor, fgColor } = opts;
-    const afg = convertToForeground(bgColor);
-    const arrows = symbols.arrows;
+    const afg = utils.convertToForeground(bgColor);
+    const arrows = effects.symbols.arrows;
 
     return (text: string) => {
         return util.format(
             "%s%s%s",
-            encode(arrows.left, afg),
-            encode(encode(text, fgColor), bgColor),
-            encode(arrows.right, afg)
+            utils.encode(arrows.left, afg),
+            utils.encode(utils.encode(text, fgColor), bgColor),
+            utils.encode(arrows.right, afg)
         );
     }
 }

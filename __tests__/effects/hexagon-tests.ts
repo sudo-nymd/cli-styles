@@ -1,9 +1,8 @@
-
 import * as logger from '../lib/logger';
-import * as util from 'util';
-import { expect } from 'chai';
-import { hexagon, ModuleName } from '../../src/effects/hexagon';
-import ansiStyles from '../../src/ansi-styles';
+import { ansiStyles, effects } from '../../src/index';
+
+const ModuleName = 'effects/hexagon';
+const { hexagon } = effects;
 
 // "Stateless" logging functions (avoid clashes with Mocha's hijackng of "this")
 const LOGENTRY = logger.create(ModuleName);
@@ -18,7 +17,6 @@ describe(`It tests the "${ModuleName}" module.`, function () {
         // Flush logging buffer after every test!
         logger.flush(LOGENTRY);
     });
-
 
     it(`Prints a couple of hexagons.`, function (done) {
 

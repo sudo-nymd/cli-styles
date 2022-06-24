@@ -1,7 +1,8 @@
-import ansiStyles from "../src/ansi-styles";
+import { ansiStyles, AnyStyleCode, AnsiColorCodeTypes, AnsiColorCode, AnsiModifierCode, AnsiStyleCode, AnsiStyleCodeTypes, StyleFunction } from "../src/index";
+import { ANSI_STYLE_CODES as AnsiStyleCodes } from "../src/common/colors";
 import { ModuleName } from '../src/ansi-styles';
-import { AnsiStyleCodes } from '../src/common/colors';
-import { AnyStyleCode, AnsiColorCodeTypes, AnsiColorCode, AnsiModifierCode, AnsiStyleCode, AnsiStyleCodeTypes, StyleFunction } from "../src/common/types";
+import {  } from '../src/common/colors';
+import {  } from "../src/common/types";
 import * as logger from './lib/logger';
 import * as util from 'util';
 import { expect } from 'chai';

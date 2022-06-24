@@ -1,29 +1,25 @@
-import ansiStyles from './ansi-styles';
-import * as ansiUtils from './common/ansi-utils';
+export * as effects from './effects';
 
-//import * as symbols from './symbols';
-import { AnsiStyleCodes } from './common/colors';
-import {
-    AnsiColorCodeTypes,
-    AnsiStyleCode,
-    AnsiStyleCodeTypes,
-    StyleFunction
-    } from './ansi-styles';
-
-import { AnsiColorCode, AnsiModifierCode, StyleCodeArray, IAnsiStyles, IAnsiStyleCodes } from './common/types';
-
+//export { bubble, BubbleOptions } from './effects/bubble';
+//export { hexagon, HexagonOptions } from './effects/hexagon';
 export { 
-    AnsiColorCode, 
-    AnsiColorCodeTypes, 
-    AnsiModifierCode, 
-    AnsiStyleCode, 
-    AnsiStyleCodes, 
     AnsiStyleCodeTypes, 
-    ansiStyles,
-    ansiUtils,
-    StyleCodeArray, 
-    StyleFunction, 
+    AnsiColorCodeTypes, 
+    AnsiStyleCode,
+    AnsiColorCode,
+    AnsiTransparentCode,
+    AnsiModifierCode,
+    AnyStyleCode,
+    IAnsiStyles,
     IAnsiStyleCodes,
-    IAnsiStyles
-    //symbols
-}
+    StyleCodeArray,
+    StyleCodeDictionary,
+    StyleFunction
+} from './common/types';
+
+export { utils } from './common/ansi-utils';
+
+// import { createInstance } from './ansi-styles';
+// export const ansiStyles = createInstance();
+// console.log('index: ' + ansiStyles);
+export { ansiStyles } from './ansi-styles'

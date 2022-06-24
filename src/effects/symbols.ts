@@ -1,3 +1,5 @@
+
+
 type SymbolMap = {
     [key: string]: string;
 }
@@ -35,5 +37,3 @@ export namespace symbols {
         roundDouble: { left: "❠", right: "❠" }
     }
 }
-
-export const ModuleName = "symbols"

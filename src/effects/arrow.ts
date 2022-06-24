@@ -1,8 +1,10 @@
-import { ansiStyles, ansiUtils } from "../index";
-import { AnsiColorCode } from "../common/types";
-import { symbols } from "./symbols";
+import { utils, AnsiColorCode, effects } from "../index";
 
-const { transparent, encode, convertToForeground } = ansiUtils;
+import { ansiStyles } from '../ansi-styles'
+
+//console.log("arrow " + ansiStyles)
+
+//const { transparent, encode, convertToForeground } = utils;
 
     export enum ArrowDirections {
         //Right = "\ue0b0",
@@ -26,14 +28,14 @@ const { transparent, encode, convertToForeground } = ansiUtils;
     export const arrow = (options?: ArrowOptions) => {
         const opts = Object.assign(DEFAULT, options);
         const { bgColor, fgColor, direction } = opts;
-        const afg = convertToForeground(bgColor);
-        const symbol = symbols.arrows[direction];
+        const afg = utils.convertToForeground(bgColor);
+        const symbol = effects.symbols.arrows[direction];
 
         return (text: string) => {
             if (direction === ArrowDirections.Right) {
-                return transparent(symbol, afg) + encode(encode(text, fgColor), bgColor) + encode(symbol, afg);
+                return utils.transparent(symbol, afg) + utils.encode(utils.encode(text, fgColor), bgColor) + utils.encode(symbol, afg);
             } else {
-                return encode(symbol, afg) + encode(encode(text, fgColor), bgColor) + transparent(symbol, afg);
+                return utils.encode(symbol, afg) + utils.encode(utils.encode(text, fgColor), bgColor) + utils.transparent(symbol, afg);
             }
         }
     }

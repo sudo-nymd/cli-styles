@@ -1,18 +1,18 @@
 {
-  "compilerOptions": {
-    "target": "es2016",
-    "declaration": true,
-    "declarationDir": "types",
-    "sourceMap": true,
-    "module": "CommonJS",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "outDir": "lib"
-  },
-  "include": [
-    "./src/**/*.ts"
-  ]
+    "compilerOptions": {
+        "target": "es2020",
+        "declaration": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "module": "esnext",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "outDir": "build"
+    },
+    "include": [
+        "./src/**/*.ts"
+    ]
 }
