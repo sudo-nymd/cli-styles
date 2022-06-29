@@ -1,8 +1,13 @@
 import * as logger from '../lib/logger';
+import * as util from 'util';
+import { expect } from 'chai';
+import { } from '../../src/effects/arrow';
+import { } from '../../src/effects/symbols'
 import { ansiStyles, effects } from '../../src/index';
 
-const ModuleName = 'effects/hexagon';
-const { hexagon } = effects;
+
+const ModuleName = "effects/hexagon";
+const { Hexagon } = effects;
 
 // "Stateless" logging functions (avoid clashes with Mocha's hijackng of "this")
 const LOGENTRY = logger.create(ModuleName);
@@ -20,15 +25,19 @@ describe(`It tests the "${ModuleName}" module.`, function () {
 
     it(`Prints a couple of hexagons.`, function (done) {
 
-        const hexagon1 = hexagon({ bgColor: ansiStyles.codes.bgBlueBright });
-        const hexagon2 = hexagon({ bgColor: ansiStyles.codes.bgMagentaBright });
-
-        log(hexagon1("This is a right-facing hexagon."));
-        log(hexagon2("This is a left-facing hexagon."));
-        log(hexagon1("This is a right-facing hexagon.") + hexagon2("Another hexagon."));
-        log(hexagon2("This is a left-facing hexagon.") + hexagon1("Another hexagon."));
-        
+        const hexagon = new Hexagon();
+        log(hexagon.bold.italic.format(`This is a HEXAGON.`));
+        log(
+            util.format("%s%s",
+                hexagon
+                    .reset
+                    .fgColor(ansiStyles.codes.black)
+                    .bgColor(ansiStyles.codes.bgGreenBright)
+                    .format("This is a HEXAGON."),
+                hexagon
+                    .bgColor(ansiStyles.codes.bgMagenta)
+                    .format("This is another HEXAGON."))
+        )
         done();
     });
-
 });

@@ -1,12 +1,11 @@
 import * as logger from '../lib/logger';
 import * as util from 'util';
 import { expect } from 'chai';
-import {  } from '../../src/effects/arrow';
-import {  } from '../../src/effects/symbols'
 import { ansiStyles, effects } from '../../src/index';
 
+
 const ModuleName = "effects/arrow";
-const { arrow, ArrowDirections} = effects;
+const { Arrow, ArrowDirections, Hexagon } = effects;
 
 // "Stateless" logging functions (avoid clashes with Mocha's hijackng of "this")
 const LOGENTRY = logger.create(ModuleName);
@@ -22,18 +21,24 @@ describe(`It tests the "${ModuleName}" module.`, function () {
         logger.flush(LOGENTRY);
     });
 
-
     it(`Prints a couple of arrows.`, function (done) {
 
-        const rightArrow = arrow({ bgColor: ansiStyles.codes.bgBlueBright });
-        const leftArrow = arrow({ direction: ArrowDirections.Left, bgColor: ansiStyles.codes.bgMagentaBright });
-
-        log(rightArrow("This is a right-facing arrow."));
-        log(leftArrow("This is a left-facing arrow."));
-        log(rightArrow("This is a right-facing arrow.") + rightArrow("Another arrow."));
-        log(leftArrow("This is a left-facing arrow.") + leftArrow("Another arrow."));
+        const arrow = new Arrow();
+        log(arrow.bold.italic.format(`This is a right-facing arrow.`));
+        log(arrow.direction(ArrowDirections.Left).format(`This is a left-facing arrow.`));
+        log(
+            util.format("%s%s",
+                arrow
+                    .reset
+                    .fgColor(ansiStyles.codes.black)
+                    .bgColor(ansiStyles.codes.bgGreenBright)
+                    .format("This is an arrow."),
+                arrow
+                    .bgColor(ansiStyles.codes.bgMagenta)
+                    .format("This is another arrow.")
+            )
+        )
         
         done();
     });
-
 });
