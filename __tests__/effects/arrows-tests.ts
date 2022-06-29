@@ -41,4 +41,18 @@ describe(`It tests the "${ModuleName}" module.`, function () {
         
         done();
     });
+
+    it('Tests Arrow constructor', function(done) {
+        
+        let arrow = new Arrow();
+        log(arrow.format('This is a constructor test.'));
+
+        arrow = new Arrow({ bgColor: ansiStyles.codes.bgCyan, fgColor: ansiStyles.codes.green});
+        log(arrow.format('This is a constructor with a cyan background and green text.'));
+
+        arrow = new Arrow({ direction: ArrowDirections.Left, bgColor: ansiStyles.codes.bgRedBright, fgColor: ansiStyles.codes.yellowBright });
+        log(arrow.format('This is a constructor with a red background and yellow text facing left.'));
+        
+        done();
+    })
 });
