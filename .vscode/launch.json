@@ -15,6 +15,7 @@
             "internalConsoleOptions": "openOnSessionStart",
             "name": "Mocha Tests",
             "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "envFile": "${workspaceFolder}/debug.env",
             "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
